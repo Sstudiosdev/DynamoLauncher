@@ -2,7 +2,7 @@ from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt, QSettings
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QProgressBar, QPushButton, QApplication, QMainWindow, QMessageBox
 from PyQt5.QtGui import QPixmap
 from os.path import join, isdir
-import os  
+import os
 
 from minecraft_launcher_lib.utils import get_minecraft_directory, get_version_list
 from minecraft_launcher_lib.install import install_minecraft_version
@@ -164,24 +164,33 @@ class MainWindow(QMainWindow):
 
     def load_available_versions(self):
         # Obtiene la lista de versiones disponibles
-        available_versions = [version['id'] for version in get_version_list()]
+        available_versions = sorted([version['id'] for version in get_version_list()], key=self.version_sort_key)
 
         # Llena el ComboBox con las versiones disponibles
         self.version_select.clear()
         self.version_select.addItem("Available Minecraft Versions")  # Opción predeterminada
-        self.version_select.addItems(sorted(available_versions))
+        self.version_select.addItems(available_versions)
 
     def load_downloaded_versions(self):
         # Obtiene la ruta de la carpeta de versiones de Minecraft
         versions_folder = join(minecraft_directory, 'versions')
 
         # Obtiene las carpetas de versiones instaladas
-        downloaded_versions = [f for f in sorted(os.listdir(versions_folder)) if isdir(join(versions_folder, f))]
+        downloaded_versions = sorted([f for f in os.listdir(versions_folder) if isdir(join(versions_folder, f))], key=self.version_sort_key)
 
         # Llena el ComboBox con las versiones instaladas
         self.downloaded_version_select.clear()
         self.downloaded_version_select.addItem("Downloaded Minecraft Versions")  # Opción predeterminada
         self.downloaded_version_select.addItems(downloaded_versions)
+
+    def version_sort_key(self, version):
+        # Función de clave para ordenar versiones
+        try:
+            # Intenta convertir las partes de la versión a enteros
+            return tuple(map(int, version.split('.')))
+        except ValueError:
+            # Si hay un error al convertir a enteros, devuelve una tupla vacía
+            return tuple()
 
     def launch_game(self):
         # Guardar el nombre de usuario antes de lanzar el juego
