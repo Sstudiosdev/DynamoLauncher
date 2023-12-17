@@ -1,11 +1,10 @@
-from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QProgressBar, QPushButton, QApplication, QMainWindow
+from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt, QSettings
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QProgressBar, QPushButton, QApplication, QMainWindow, QMessageBox
 from PyQt5.QtGui import QPixmap
 
 from minecraft_launcher_lib.utils import get_minecraft_directory, get_version_list
 from minecraft_launcher_lib.install import install_minecraft_version
 from minecraft_launcher_lib.command import get_minecraft_command
-
 
 from random_username.generate import generate_username
 from uuid import uuid1
@@ -86,7 +85,6 @@ class MainWindow(QMainWindow):
         
         self.progress_spacer = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         
-
         self.start_progress_label = QLabel(self.centralwidget)
         self.start_progress_label.setText('')
         self.start_progress_label.setVisible(False)
@@ -99,6 +97,10 @@ class MainWindow(QMainWindow):
         self.start_button.setText('Play')
         self.start_button.clicked.connect(self.launch_game)
         
+        self.history_button = QPushButton(self.centralwidget)
+        self.history_button.setText('User History')
+        self.history_button.clicked.connect(self.show_user_history)
+
         self.vertical_layout = QVBoxLayout(self.centralwidget)
         self.vertical_layout.setContentsMargins(15, 15, 15, 15)
         self.vertical_layout.addWidget(self.logo, 0, Qt.AlignmentFlag.AlignHCenter)
@@ -109,22 +111,54 @@ class MainWindow(QMainWindow):
         self.vertical_layout.addWidget(self.start_progress_label) 
         self.vertical_layout.addWidget(self.start_progress)
         self.vertical_layout.addWidget(self.start_button)
+        self.vertical_layout.addWidget(self.history_button)
 
         self.launch_thread = LaunchThread()
         self.launch_thread.state_update_signal.connect(self.state_update)
         self.launch_thread.progress_update_signal.connect(self.update_progress)
 
         self.setCentralWidget(self.centralwidget)
-    
+
+        # Cargar el nombre de usuario guardado
+        self.load_username()
+
+        # Historial de nombres de usuario
+        self.history = []
+
+    def load_username(self):
+        settings = QSettings('TuOrganizacion', 'TuAplicacion')
+        saved_username = settings.value('username', '')
+        if saved_username:
+            self.username.setText(saved_username)
+
+    def save_username(self):
+        username = self.username.text()
+        if username:
+            self.history.append(username)
+            settings = QSettings('TuOrganizacion', 'TuAplicacion')
+            settings.setValue('username', username)
+
+    def show_user_history(self):
+        history_text = "\n".join(self.history)
+        message_box = QMessageBox()
+        message_box.setWindowTitle("User History")
+        message_box.setText("Usernames used:\n" + history_text)
+        message_box.exec_()
+
     def state_update(self, value):
         self.start_button.setDisabled(value)
         self.start_progress_label.setVisible(value)
         self.start_progress.setVisible(value)
+
     def update_progress(self, progress, max_progress, label):
         self.start_progress.setValue(progress)
         self.start_progress.setMaximum(max_progress)
         self.start_progress_label.setText(label) 
+
     def launch_game(self):
+        # Guardar el nombre de usuario antes de lanzar el juego
+        self.save_username()
+
         self.launch_thread.launch_setup_signal.emit(self.version_select.currentText(), self.username.text())
         self.launch_thread.start()
 
