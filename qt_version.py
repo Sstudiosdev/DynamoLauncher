@@ -80,6 +80,7 @@ class MainWindow(QMainWindow):
         self.username.setPlaceholderText('Username')
         
         self.version_select = QComboBox(self.centralwidget)
+        self.version_select.addItem("Minecraft versions")  # Opción predeterminada
         for version in get_version_list():
             self.version_select.addItem(version['id'])
         
@@ -158,6 +159,11 @@ class MainWindow(QMainWindow):
     def launch_game(self):
         # Guardar el nombre de usuario antes de lanzar el juego
         self.save_username()
+
+        # Verificar si se ha seleccionado una versión
+        if self.version_select.currentIndex() == 0:
+            QMessageBox.warning(self, "Warning", "Please select a Minecraft version.")
+            return
 
         self.launch_thread.launch_setup_signal.emit(self.version_select.currentText(), self.username.text())
         self.launch_thread.start()
