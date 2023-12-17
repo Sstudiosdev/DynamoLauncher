@@ -1,6 +1,8 @@
 from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt, QSettings
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QProgressBar, QPushButton, QApplication, QMainWindow, QMessageBox
 from PyQt5.QtGui import QPixmap
+from os.path import join, isdir
+import os  
 
 from minecraft_launcher_lib.utils import get_minecraft_directory, get_version_list
 from minecraft_launcher_lib.install import install_minecraft_version
@@ -67,28 +69,28 @@ class MainWindow(QMainWindow):
 
         self.resize(300, 283)
         self.centralwidget = QWidget(self)
-        
+
         self.logo = QLabel(self.centralwidget)
         self.logo.setMaximumSize(QSize(256, 37))
         self.logo.setText('')
         self.logo.setPixmap(QPixmap('assets/title.png'))
         self.logo.setScaledContents(True)
-        
+
         self.titlespacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-        
+
         self.username = QLineEdit(self.centralwidget)
         self.username.setPlaceholderText('Username')
-        
+
         self.version_select = QComboBox(self.centralwidget)
-        self.version_select.addItem("Minecraft versions")  # Opción predeterminada
-        for version in get_version_list():
-            version_id = version['id']
-            # Excluir versiones snapshots (aquellas que no siguen el formato X.X.X)
-            if version_id.count('.') == 2 and version_id[0].isdigit() and version_id[-1].isdigit():
-                self.version_select.addItem(version_id)
-        
+        self.version_select.addItem("Available Minecraft Versions")  # Opción predeterminada
+        self.load_available_versions()  # Llamada a la función para cargar las versiones disponibles
+
+        self.downloaded_version_select = QComboBox(self.centralwidget)
+        self.downloaded_version_select.addItem("Downloaded Minecraft Versions")  # Opción predeterminada
+        self.load_downloaded_versions()  # Llamada a la función para cargar las versiones descargadas
+
         self.progress_spacer = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
-        
+
         self.start_progress_label = QLabel(self.centralwidget)
         self.start_progress_label.setText('')
         self.start_progress_label.setVisible(False)
@@ -96,11 +98,11 @@ class MainWindow(QMainWindow):
         self.start_progress = QProgressBar(self.centralwidget)
         self.start_progress.setProperty('value', 24)
         self.start_progress.setVisible(False)
-        
+
         self.start_button = QPushButton(self.centralwidget)
         self.start_button.setText('Play')
         self.start_button.clicked.connect(self.launch_game)
-        
+
         self.history_button = QPushButton(self.centralwidget)
         self.history_button.setText('User History')
         self.history_button.clicked.connect(self.show_user_history)
@@ -111,6 +113,7 @@ class MainWindow(QMainWindow):
         self.vertical_layout.addItem(self.titlespacer)
         self.vertical_layout.addWidget(self.username)
         self.vertical_layout.addWidget(self.version_select)
+        self.vertical_layout.addWidget(self.downloaded_version_select)
         self.vertical_layout.addItem(self.progress_spacer)
         self.vertical_layout.addWidget(self.start_progress_label) 
         self.vertical_layout.addWidget(self.start_progress)
@@ -159,19 +162,46 @@ class MainWindow(QMainWindow):
         self.start_progress.setMaximum(max_progress)
         self.start_progress_label.setText(label) 
 
+    def load_available_versions(self):
+        # Obtiene la lista de versiones disponibles
+        available_versions = [version['id'] for version in get_version_list()]
+
+        # Llena el ComboBox con las versiones disponibles
+        self.version_select.clear()
+        self.version_select.addItem("Available Minecraft Versions")  # Opción predeterminada
+        self.version_select.addItems(sorted(available_versions))
+
+    def load_downloaded_versions(self):
+        # Obtiene la ruta de la carpeta de versiones de Minecraft
+        versions_folder = join(minecraft_directory, 'versions')
+
+        # Obtiene las carpetas de versiones instaladas
+        downloaded_versions = [f for f in sorted(os.listdir(versions_folder)) if isdir(join(versions_folder, f))]
+
+        # Llena el ComboBox con las versiones instaladas
+        self.downloaded_version_select.clear()
+        self.downloaded_version_select.addItem("Downloaded Minecraft Versions")  # Opción predeterminada
+        self.downloaded_version_select.addItems(downloaded_versions)
+
     def launch_game(self):
         # Guardar el nombre de usuario antes de lanzar el juego
         self.save_username()
 
         # Verificar si se ha seleccionado una versión
-        if self.version_select.currentIndex() == 0:
+        selected_version = None
+        if self.version_select.currentIndex() > 0:
+            selected_version = self.version_select.currentText()
+        elif self.downloaded_version_select.currentIndex() > 0:
+            selected_version = self.downloaded_version_select.currentText()
+
+        if selected_version is None:
             QMessageBox.warning(self, "Warning", "Please select a Minecraft version.")
             return
 
-        self.launch_thread.launch_setup_signal.emit(self.version_select.currentText(), self.username.text())
+        self.launch_thread.launch_setup_signal.emit(selected_version, self.username.text())
         self.launch_thread.start()
 
-if __name__ == '__main__':
+def main():
     QApplication.setAttribute(Qt.ApplicationAttribute.AA_EnableHighDpiScaling, True)
 
     app = QApplication(argv)
@@ -179,3 +209,6 @@ if __name__ == '__main__':
     window.show()
 
     exit(app.exec_())
+
+if __name__ == '__main__':
+    main()
