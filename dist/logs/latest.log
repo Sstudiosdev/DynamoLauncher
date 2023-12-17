@@ -1,0 +1,515 @@
+[18:14:15] [main/WARN]: Failed to add PDH Counter: \Archivo de paginación(_Total)\% Usage, Error code: 0xC0000BB8
+[18:14:15] [main/WARN]: Failed to add counter for PDH object: Archivo de paginación
+[18:14:15] [main/WARN]: Disabling further attempts to query Paging File.
+[18:14:29] [Render thread/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[18:14:31] [Render thread/ERROR]: Failed to verify authentication
+com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
+	at com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:56) ~[authlib-2.3.31.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilSocialInteractionsService.checkPrivileges(YggdrasilSocialInteractionsService.java:112) ~[authlib-2.3.31.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilSocialInteractionsService.<init>(YggdrasilSocialInteractionsService.java:42) ~[authlib-2.3.31.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.createSocialInteractionsService(YggdrasilAuthenticationService.java:151) ~[authlib-2.3.31.jar:?]
+	at dvo.a(SourceFile:672) [1.17.jar:?]
+	at dvo.<init>(SourceFile:431) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:179) [1.17.jar:?]
+Caused by: com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 401
+	at com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:77) ~[authlib-2.3.31.jar:?]
+	at com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:47) ~[authlib-2.3.31.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilSocialInteractionsService.checkPrivileges(YggdrasilSocialInteractionsService.java:104) ~[authlib-2.3.31.jar:?]
+	... 5 more
+[18:14:31] [Render thread/INFO]: Setting user: lusrmqj8
+[18:14:31] [Render thread/INFO]: Backend library: LWJGL version 3.2.2 build 10
+[18:14:33] [Render thread/INFO]: Narrator library for x64 successfully loaded
+[18:14:34] [Render thread/INFO]: Reloading ResourceManager: Default
+[18:14:34] [Realms Notification Availability checker #1/ERROR]: Realms error code: 400 message: 
+[18:14:34] [Realms Notification Availability checker #1/ERROR]: Realms error code: 400 message: 
+[18:14:43] [Render thread/INFO]: OpenAL initialized.
+[18:14:43] [Render thread/INFO]: Sound engine started
+[18:14:44] [Render thread/INFO]: Created: 1024x1024x4 minecraft:textures/atlas/blocks.png-atlas
+[18:14:44] [Render thread/INFO]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
+[18:14:44] [Render thread/INFO]: Created: 1024x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[18:14:44] [Render thread/INFO]: Created: 1024x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[18:14:44] [Render thread/INFO]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[18:14:44] [Render thread/INFO]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[18:14:44] [Render thread/INFO]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[18:14:48] [Render thread/INFO]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[18:14:49] [Render thread/INFO]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[18:14:49] [Render thread/INFO]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[18:14:49] [Realms Notification Availability checker #1/ERROR]: Realms error code: 400 message: 
+[18:15:06] [Realms Notification Availability checker #1/ERROR]: Realms error code: 400 message: 
+[18:15:11] [Render thread/INFO]: Connecting to play.multiversemc.club, 25565
+[18:15:15] [Render thread/WARN]: Unknown custom packed identifier: minecraft:register
+[18:15:16] [Render thread/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[18:15:16] [Render thread/WARN]: Unknown custom packed identifier: minecraft:register
+[18:15:16] [Render thread/INFO]: [CHAT] \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n 
+[18:15:20] [Render thread/INFO]: [CHAT] [+] lusrmqj8 Se ha conectado al servidor!
+[18:15:21] [Render thread/INFO]: Loaded 39 advancements
+[18:15:21] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:15:21] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:15:21] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:15:21] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:15:21] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:15:21] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:15:21] [Render thread/INFO]: [CHAT] --------------------------------------------
+[18:15:21] [Render thread/INFO]: [CHAT] Bienvenido lusrmqj8 a Multiversemc
+[18:15:21] [Render thread/INFO]: [CHAT] 
+[18:15:21] [Render thread/INFO]: [CHAT]  * Discord: discord.gg/multiversemc
+[18:15:21] [Render thread/INFO]: [CHAT]  * Tienda: multiversenetw.tebex.io
+[18:15:21] [Render thread/INFO]: [CHAT]  * Foro: multiversemc.xyz
+[18:15:21] [Render thread/INFO]: [CHAT] --------------------------------------------
+[18:15:21] [Render thread/INFO]: [CHAT] Utilice el comando /login <contraseña>.
+[18:15:33] [Render thread/INFO]: [CHAT] [Server: lusrmqj8 se convirtió en operador(a) del servidor]
+[18:15:40] [Render thread/INFO]: [CHAT] Te has logueado con éxito.
+[18:15:40] [Render thread/WARN]: Unknown custom packed identifier: labymod3:main
+[18:15:40] [Render thread/WARN]: Unknown custom packed identifier: legacy:lmc
+[18:15:58] [Render thread/INFO]: [CHAT] [+] Villas_200_8 Se ha conectado al servidor!
+[18:16:10] [Render thread/INFO]: [CHAT] [-] Villas_200_8 se ha desconectado del servidor!
+[18:16:13] [Render thread/INFO]: [CHAT] No se ha podido conectar a fullpvp: You are not whitelisted on this server!
+[18:16:41] [Render thread/INFO]: [CHAT] No se ha podido conectar a fullpvp: You are not whitelisted on this server!
+[18:16:46] [Render thread/INFO]: [CHAT] No hemos podido conectarte a gens. Por favor, inténtalo de nuevo más tarde.
+[18:16:51] [Render thread/INFO]: [CHAT] Captura guardada como 2023-12-16_18.16.50.png
+[18:16:51] [Render thread/INFO]: [CHAT] [+] axel303040 Se ha conectado al servidor!
+[18:16:57] [Render thread/INFO]: [CHAT] No se ha podido conectar a fullpvp: You are not whitelisted on this server!
+[18:17:39] [Render thread/INFO]: Connecting to spookmc.net, 25565
+[18:17:40] [Render thread/WARN]: Unknown custom packed identifier: minecraft:register
+[18:17:40] [Render thread/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[18:17:40] [Render thread/WARN]: Unknown custom packed identifier: minecraft:register
+[18:17:40] [Render thread/INFO]: [CHAT] \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n 
+[18:17:40] [Render thread/WARN]: Unknown custom packed identifier: minecraft:register
+[18:17:41] [Render thread/INFO]: [CHAT] ?????????????????????????????????????????????????????
+[18:17:41] [Render thread/INFO]: [CHAT]  ? Regístrate usando el siguiente comando:
+[18:17:41] [Render thread/INFO]: [CHAT]      /register <contraseña> <contraseña>
+[18:17:41] [Render thread/INFO]: [CHAT] 
+[18:17:41] [Render thread/INFO]: [CHAT]  ? Si ya estás registrado, inicia sesión usando:
+[18:17:41] [Render thread/INFO]: [CHAT]                /login <contraseña>
+[18:17:41] [Render thread/INFO]: [CHAT] 
+[18:17:41] [Render thread/INFO]: [CHAT]  ? ¿Eres premium? Evita iniciar sesión usando:
+[18:17:41] [Render thread/INFO]: [CHAT]                    /premium
+[18:17:41] [Render thread/INFO]: [CHAT] 
+[18:17:41] [Render thread/INFO]: [CHAT]  (Si tiene problemas, comuníquese con el staff.)
+[18:17:41] [Render thread/INFO]: [CHAT]                  discord.spookmc.net
+[18:17:41] [Render thread/INFO]: [CHAT] ?????????????????????????????????????????????????????
+[18:17:41] [Render thread/INFO]: [CHAT] 
+[18:17:41] [Render thread/INFO]: [CHAT]  ¿Estás utilizando una cuenta premium?
+[18:17:41] [Render thread/INFO]: [CHAT]  (después de aceptar, tendrá que volver a ingresar).
+[18:17:41] [Render thread/INFO]: [CHAT] 
+[18:17:41] [Render thread/INFO]: [CHAT]   Sí      No
+[18:17:41] [Render thread/INFO]: [CHAT] 
+[18:17:45] [Render thread/INFO]: [CHAT] §6§lCOLA §8§l» §fNo puedes usar ese comando en este servidor.
+[18:17:50] [Render thread/INFO]: [CHAT] Utilice el comando /register <contraseña> <contraseña>.
+[18:17:51] [Render thread/INFO]: [CHAT] Has agotado los límites de la cuenta por IP.
+[18:18:06] [Render thread/INFO]: Connecting to play.multiversemc.club, 25565
+[18:18:06] [Render thread/WARN]: Unknown custom packed identifier: minecraft:register
+[18:18:06] [Render thread/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[18:18:06] [Render thread/WARN]: Unknown custom packed identifier: minecraft:register
+[18:18:06] [Render thread/INFO]: [CHAT] \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n 
+[18:18:06] [Render thread/INFO]: [CHAT] Su sesión de inicio de sesión ha sido resumida.
+[18:18:07] [Render thread/INFO]: [CHAT] [+] lusrmqj8 Se ha conectado al servidor!
+[18:18:07] [Render thread/WARN]: Unknown custom packed identifier: labymod3:main
+[18:18:07] [Render thread/WARN]: Unknown custom packed identifier: legacy:lmc
+[18:18:07] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:18:07] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:18:07] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:18:07] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:18:07] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:18:07] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:18:07] [Render thread/INFO]: Loaded 39 advancements
+[18:18:07] [Render thread/INFO]: [CHAT] --------------------------------------------
+[18:18:07] [Render thread/INFO]: [CHAT] Bienvenido lusrmqj8 a Multiversemc
+[18:18:07] [Render thread/INFO]: [CHAT] 
+[18:18:07] [Render thread/INFO]: [CHAT]  * Discord: discord.gg/multiversemc
+[18:18:07] [Render thread/INFO]: [CHAT]  * Tienda: multiversenetw.tebex.io
+[18:18:07] [Render thread/INFO]: [CHAT]  * Foro: multiversemc.xyz
+[18:18:07] [Render thread/INFO]: [CHAT] --------------------------------------------
+[18:18:21] [Render thread/INFO]: Connecting to play.multiversemc.club, 25565
+[18:18:22] [Render thread/WARN]: Unknown custom packed identifier: minecraft:register
+[18:18:22] [Render thread/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[18:18:22] [Render thread/WARN]: Unknown custom packed identifier: minecraft:register
+[18:18:22] [Render thread/INFO]: [CHAT] \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n 
+[18:18:22] [Render thread/INFO]: [CHAT] Su sesión de inicio de sesión ha sido resumida.
+[18:18:22] [Render thread/WARN]: Unknown custom packed identifier: labymod3:main
+[18:18:22] [Render thread/WARN]: Unknown custom packed identifier: legacy:lmc
+[18:18:22] [Render thread/INFO]: [CHAT] [+] lusrmqj8 Se ha conectado al servidor!
+[18:18:22] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:18:22] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:18:22] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:18:22] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:18:22] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:18:22] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:18:22] [Render thread/INFO]: Loaded 39 advancements
+[18:18:23] [Render thread/INFO]: [CHAT] --------------------------------------------
+[18:18:23] [Render thread/INFO]: [CHAT] Bienvenido lusrmqj8 a Multiversemc
+[18:18:23] [Render thread/INFO]: [CHAT] 
+[18:18:23] [Render thread/INFO]: [CHAT]  * Discord: discord.gg/multiversemc
+[18:18:23] [Render thread/INFO]: [CHAT]  * Tienda: multiversenetw.tebex.io
+[18:18:23] [Render thread/INFO]: [CHAT]  * Foro: multiversemc.xyz
+[18:18:23] [Render thread/INFO]: [CHAT] --------------------------------------------
+[18:18:31] [Render thread/INFO]: [CHAT] No se ha podido conectar a fullpvp: You are not whitelisted on this server!
+[18:18:47] [Render thread/INFO]: [CHAT] [+] axel303040 Se ha conectado al servidor!
+[18:19:02] [Render thread/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[18:19:02] [Render thread/WARN]: Unknown custom packed identifier: minecraft:register
+[18:19:03] [Render thread/INFO]: [CHAT] lusrmqj8 se conectó
+[18:19:03] [Render thread/INFO]: Loaded 3 advancements
+[18:19:03] [Render thread/INFO]: [CHAT] Welcome MV+ lusrmqj8 to the server!
+[18:19:03] [Render thread/INFO]: [CHAT] lusrmqj8 ha conseguido el progreso [Mejorando herramientas]
+[18:19:03] [Render thread/INFO]: Loaded 11 advancements
+[18:19:10] [Render thread/INFO]: [CHAT] You do not have access to that command.
+[18:19:23] [Render thread/INFO]: [CHAT] You do not have access to that command.
+[18:19:35] [Render thread/INFO]: [CHAT] [Server: lusrmqj8 se convirtió en operador(a) del servidor]
+[18:19:38] [Render thread/INFO]: [CHAT] Set game mode creative for MV+ lusrmqj8.
+[18:19:49] [Render thread/INFO]: [CHAT] --- Teleport ---
+[18:19:49] [Render thread/INFO]: [CHAT] Allows you to display the teleport menu.
+[18:19:49] [Render thread/INFO]: [CHAT] /mv tp [PLAYER] {DESTINATION}
+[18:19:49] [Render thread/INFO]: [CHAT] Permission: multiverse.teleport.*
+[18:19:49] [Render thread/INFO]: [CHAT] Aliases: mv tp, mvtp
+[18:20:01] [Render thread/INFO]: [CHAT] ====[ Multiverse World List ]====
+[18:20:01] [Render thread/INFO]: [CHAT] [ Page 1 of 1 ]
+[18:20:01] [Render thread/INFO]: [CHAT] gens - NORMAL
+[18:20:01] [Render thread/INFO]: [CHAT] world - NORMAL
+[18:20:02] [Render thread/INFO]: [CHAT] world_the_end - THE_END
+[18:20:02] [Render thread/INFO]: [CHAT] world_nether - NETHER
+[18:20:02] [Render thread/INFO]: [CHAT] IridiumSkyblock_nether - NETHER
+[18:20:02] [Render thread/INFO]: [CHAT] IridiumSkyblock - NORMAL
+[18:20:02] [Render thread/INFO]: [CHAT] IridiumSkyblock_the_end - THE_END
+[18:20:02] [Render thread/INFO]: [CHAT] 
+[18:20:09] [Render thread/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[18:20:09] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:20:09] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:20:10] [Worker-Main-4/ERROR]: Signature is missing from textures payload
+[18:20:10] [Worker-Main-5/ERROR]: Signature is missing from textures payload
+[18:20:22] [Render thread/INFO]: [CHAT] Set game mode creative for MV+ lusrmqj8.
+[18:20:40] [Render thread/INFO]: [CHAT] IridiumSkyblock » You dont have a Island.
+[18:20:43] [Render thread/INFO]: [CHAT] IridiumSkyblock » You dont have a Island.
+[18:20:52] [Worker-Main-5/ERROR]: Signature is missing from textures payload
+[18:21:58] [Render thread/INFO]: [CHAT] You set the weather to sun in gens.
+[18:22:06] [Render thread/INFO]: [CHAT] FORO OFICIAL
+[18:22:06] [Render thread/INFO]: [CHAT] 
+[18:22:06] [Render thread/INFO]: [CHAT] !Si deseas conocer personas en un entorno
+[18:22:06] [Render thread/INFO]: [CHAT] nuevo con nuevas personas con tus
+[18:22:06] [Render thread/INFO]: [CHAT] gustos y intereces entonces unete a
+[18:22:06] [Render thread/INFO]: [CHAT] nuestro foro mediante este link!
+[18:22:06] [Render thread/INFO]: [CHAT] 
+[18:22:06] [Render thread/INFO]: [CHAT] https://multiversemc.xyz/
+[18:22:06] [Render thread/INFO]: [CHAT] 
+[18:22:06] [Render thread/INFO]: [CHAT] TIENDA OFICIAL
+[18:22:06] [Render thread/INFO]: [CHAT] 
+[18:22:06] [Render thread/INFO]: [CHAT] ¡Si desea apoyar al servidor en su
+[18:22:06] [Render thread/INFO]: [CHAT] desarrollo y mantenimiento nos puedes
+[18:22:06] [Render thread/INFO]: [CHAT] apoyar mediante este enlace!
+[18:22:06] [Render thread/INFO]: [CHAT] 
+[18:22:06] [Render thread/INFO]: [CHAT] https://multiversenetw.tebex.io/
+[18:22:06] [Render thread/INFO]: [CHAT] 
+[18:22:25] [Worker-Main-4/ERROR]: Signature is missing from textures payload
+[18:23:14] [Worker-Main-5/ERROR]: Signature is missing from textures payload
+[18:23:15] [Worker-Main-4/ERROR]: Signature is missing from textures payload
+[18:24:44] [Render thread/INFO]: [CHAT] [Debug]: Mostrar hitbox: sí
+[18:24:58] [Render thread/INFO]: [CHAT] [Debug]: Mostrar hitbox: no
+[18:25:24] [Render thread/FATAL]: Error executing task on Client
+java.lang.NullPointerException: Cannot invoke "dnw.b()" because "â˜ƒ" is null
+	at dny.d(SourceFile:199) ~[1.17.jar:?]
+	at eji.a(SourceFile:2081) ~[1.17.jar:?]
+	at st.a(SourceFile:130) ~[1.17.jar:?]
+	at st.a(SourceFile:15) ~[1.17.jar:?]
+	at pm.a(SourceFile:21) ~[1.17.jar:?]
+	at aqu.c(SourceFile:151) [1.17.jar:?]
+	at aqy.c(SourceFile:23) [1.17.jar:?]
+	at aqu.z(SourceFile:125) [1.17.jar:?]
+	at aqu.bq(SourceFile:110) [1.17.jar:?]
+	at dvo.f(SourceFile:1077) [1.17.jar:?]
+	at dvo.e(SourceFile:730) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:217) [1.17.jar:?]
+[18:25:24] [Worker-Main-4/ERROR]: Signature is missing from textures payload
+[18:25:29] [Render thread/INFO]: [CHAT] IridiumSkyblock » You dont have a Island.
+[18:25:34] [Render thread/INFO]: [CHAT] IridiumSkyblock » You cannot afford this.
+[18:25:37] [Worker-Main-5/ERROR]: Signature is missing from textures payload
+[18:25:40] [Worker-Main-4/ERROR]: Signature is missing from textures payload
+[18:25:46] [Render thread/INFO]: [CHAT] $1,000 has been added to your account.
+[18:25:46] [Render thread/INFO]: [CHAT] $1,000 added to MV+ lusrmqj8 account. New balance: $1,000
+[18:25:51] [Render thread/INFO]: [CHAT] IridiumSkyblock » Creating Island, please wait...
+[18:25:51] [Render thread/INFO]: [CHAT] IridiumSkyblock » Island Creation Completed!
+[18:25:51] [Render thread/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[18:26:25] [Render thread/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[18:26:25] [Render thread/INFO]: [CHAT] IridiumSkyblock » lusrmqj8 has deleted your Island!
+[18:26:28] [Render thread/INFO]: [CHAT] Teleporting...
+[18:26:38] [Render thread/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[18:26:46] [Render thread/INFO]: [CHAT] Spawn location set for group default.
+[18:26:47] [Worker-Main-6/ERROR]: Signature is missing from textures payload
+[18:26:47] [Worker-Main-4/ERROR]: Signature is missing from textures payload
+[18:26:55] [Render thread/INFO]: [CHAT] Set game mode creative for MV+ lusrmqj8.
+[18:27:14] [Worker-Main-6/ERROR]: Signature is missing from textures payload
+[18:27:15] [Worker-Main-6/ERROR]: Signature is missing from textures payload
+[18:28:18] [Render thread/INFO]: [CHAT] Teleporting...
+[18:28:19] [Worker-Main-4/ERROR]: Signature is missing from textures payload
+[18:28:19] [Worker-Main-5/ERROR]: Signature is missing from textures payload
+[18:28:24] [Render thread/INFO]: [CHAT] IridiumSkyblock » You cannot do that due to a running cooldown, please wait 0 hour(s), 2 minute(s), 26 second(s)!
+[18:28:29] [Render thread/INFO]: [CHAT] IridiumSkyblock » You dont have a Island.
+[18:28:32] [Render thread/INFO]: [CHAT] IridiumSkyblock » You dont have a Island.
+[18:28:56] [Render thread/INFO]: [CHAT] IridiumSkyblock » You are now bypassing Island restrictions.
+[18:29:04] [Render thread/INFO]: [CHAT] IridiumSkyblock » You cannot afford this.
+[18:29:11] [Render thread/INFO]: [CHAT] $1,000 has been added to your account.
+[18:29:11] [Render thread/INFO]: [CHAT] $1,000 added to MV+ lusrmqj8 account. New balance: $1,000
+[18:29:20] [Render thread/INFO]: [CHAT] IridiumSkyblock » Creating Island, please wait...
+[18:29:20] [Render thread/INFO]: [CHAT] IridiumSkyblock » Island Creation Completed!
+[18:29:20] [Render thread/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[18:29:24] [Render thread/INFO]: [CHAT] Set fly mode enabled for MV+ lusrmqj8.
+[18:30:29] [Realms Notification Availability checker #1/ERROR]: Realms error code: 400 message: 
+[18:30:30] [Render thread/INFO]: Stopping!
