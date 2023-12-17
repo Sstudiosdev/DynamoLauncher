@@ -163,8 +163,11 @@ class MainWindow(QMainWindow):
         self.start_progress_label.setText(label) 
 
     def load_available_versions(self):
-        # Obtiene la lista de versiones disponibles
-        available_versions = sorted([version['id'] for version in get_version_list()], key=self.version_sort_key)
+        # Obtiene la lista de versiones disponibles, excluyendo snapshots y pre-releases
+        available_versions = sorted(
+            [version['id'] for version in get_version_list() if 'snapshot' not in version['type'].lower() and 'pre' not in version['type'].lower()],
+            key=self.version_sort_key
+        )
 
         # Llena el ComboBox con las versiones disponibles
         self.version_select.clear()
