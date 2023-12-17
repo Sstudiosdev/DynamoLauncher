@@ -82,7 +82,10 @@ class MainWindow(QMainWindow):
         self.version_select = QComboBox(self.centralwidget)
         self.version_select.addItem("Minecraft versions")  # Opción predeterminada
         for version in get_version_list():
-            self.version_select.addItem(version['id'])
+            version_id = version['id']
+            # Excluir versiones snapshots (aquellas que no siguen el formato X.X.X)
+            if version_id.count('.') == 2 and version_id[0].isdigit() and version_id[-1].isdigit():
+                self.version_select.addItem(version_id)
         
         self.progress_spacer = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         
