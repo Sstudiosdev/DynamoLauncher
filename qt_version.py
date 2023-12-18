@@ -81,6 +81,9 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(QIcon('assets/215446.ico'))
         self.setWindowTitle("qt_version-1.1")
 
+        # app en pantalla completa
+        self.showMaximized()
+
         self.titlespacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.username = QLineEdit(self.centralwidget)
