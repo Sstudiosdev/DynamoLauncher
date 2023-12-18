@@ -18,3 +18,8 @@ options = {
 
 # Launch Minecraft
 subprocess.call(minecraft_launcher_lib.command.get_minecraft_command(version=version, minecraft_directory=minecraft_directory, options=options))
+
+
+# MIT License
+
+# Copyright (c) 2023 Sstudiosdev
