@@ -19,7 +19,11 @@ options = {
 # Launch Minecraft
 subprocess.call(minecraft_launcher_lib.command.get_minecraft_command(version=version, minecraft_directory=minecraft_directory, options=options))
 
-
 # MIT License
 
 # Copyright (c) 2023 Sstudiosdev
+
+# this version is for developers to # maker the app work they need the # libraries off
+
+# python
+# minecraft-lancher-lib
