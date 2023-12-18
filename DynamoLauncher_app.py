@@ -1,7 +1,5 @@
 from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt, QSettings
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QProgressBar, QPushButton, QApplication, QMainWindow, QMessageBox
-from PyQt5.QtGui import QPixmap
-from os.path import join, isdir
 from PyQt5.QtGui import QPixmap, QIcon
 import os
 
@@ -15,7 +13,9 @@ from uuid import uuid1
 from subprocess import call
 from sys import argv, exit
 
-# .DynamoLancher
+from os.path import join  # Agrega esta línea para importar 'join'
+from os.path import join, isdir
+
 minecraft_directory = get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
 
 class LaunchThread(QThread):
@@ -191,8 +191,13 @@ class MainWindow(QMainWindow):
         # Obtiene la ruta de la carpeta de versiones de Minecraft
         versions_folder = join(minecraft_directory, 'versions')
 
-        # Obtiene las carpetas de versiones instaladas
-        downloaded_versions = sorted([f for f in os.listdir(versions_folder) if isdir(join(versions_folder, f))], key=self.version_sort_key)
+        try:
+            # Intenta obtener las carpetas de versiones instaladas
+            downloaded_versions = sorted([f for f in os.listdir(versions_folder) if isdir(join(versions_folder, f))], key=self.version_sort_key)
+        except FileNotFoundError:
+            # Si la carpeta no existe, muestra un mensaje y sale de la función
+            QMessageBox.warning(self, "Warning", "Minecraft versions folder not found. Make sure DynamoLauncher is set up correctly.")
+            return
 
         # Llena el ComboBox con las versiones instaladas
         self.downloaded_version_select.clear()
@@ -237,6 +242,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 # MIT License
