@@ -2,6 +2,7 @@ from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt, QSettings
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QProgressBar, QPushButton, QApplication, QMainWindow, QMessageBox
 from PyQt5.QtGui import QPixmap
 from os.path import join, isdir
+from PyQt5.QtGui import QPixmap, QIcon
 import os
 
 from minecraft_launcher_lib.utils import get_minecraft_directory, get_version_list
@@ -75,6 +76,9 @@ class MainWindow(QMainWindow):
         self.logo.setText('')
         self.logo.setPixmap(QPixmap('assets/title.png'))
         self.logo.setScaledContents(True)
+
+        # Establecer el ícono de la ventana
+        self.setWindowIcon(QIcon('assets/215446.ico'))
 
         self.titlespacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
