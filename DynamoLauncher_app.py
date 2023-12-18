@@ -236,3 +236,8 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+# MIT License
+
+# Copyright (c) 2023 Sstudiosdev
