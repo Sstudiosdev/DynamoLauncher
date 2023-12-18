@@ -77,8 +77,9 @@ class MainWindow(QMainWindow):
         self.logo.setPixmap(QPixmap('assets/title.png'))
         self.logo.setScaledContents(True)
 
-        # Establecer el ícono de la ventana
+        # app en ventana
         self.setWindowIcon(QIcon('assets/215446.ico'))
+        self.setWindowTitle("qt_version-1.1")
 
         self.titlespacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
