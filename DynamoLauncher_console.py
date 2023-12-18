@@ -1,7 +1,7 @@
 import minecraft_launcher_lib
 import subprocess
 
-minecraft_directory = get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
+minecraft_directory = minecraft_launcher_lib.utils.get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
 
 version = input('Enter Minecraft version: ')
 username = input('Enter Username: ')
