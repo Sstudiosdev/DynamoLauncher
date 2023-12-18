@@ -15,6 +15,7 @@ from uuid import uuid1
 from subprocess import call
 from sys import argv, exit
 
+# .DynamoLancher
 minecraft_directory = get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
 
 class LaunchThread(QThread):
