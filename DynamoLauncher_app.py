@@ -15,7 +15,7 @@ from uuid import uuid1
 from subprocess import call
 from sys import argv, exit
 
-minecraft_directory = get_minecraft_directory().replace('minecraft', 'mjnlauncher')
+minecraft_directory = get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
 
 class LaunchThread(QThread):
     launch_setup_signal = pyqtSignal(str, str)
