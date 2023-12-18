@@ -100,7 +100,7 @@ class MainWindow(QMainWindow):
         self.logo.setScaledContents(True)
 
         self.setWindowIcon(QIcon('assets/215446.ico'))
-        self.setWindowTitle("qt_version-1.1")
+        self.setWindowTitle("DynamoLauncher V1.1")
 
         self.showMaximized()
 
