@@ -1,5 +1,9 @@
 from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt, QSettings
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QProgressBar, QPushButton, QApplication, QMainWindow, QMessageBox
+from PyQt5.QtWidgets import (
+    QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit,
+    QComboBox, QSpacerItem, QSizePolicy, QProgressBar,
+    QPushButton, QApplication, QMainWindow, QMessageBox
+)
 from PyQt5.QtGui import QPixmap, QIcon
 import os
 
@@ -10,10 +14,9 @@ from minecraft_launcher_lib.command import get_minecraft_command
 from random_username.generate import generate_username
 from uuid import uuid1
 
-from subprocess import call
+from subprocess import Popen, CREATE_NO_WINDOW
 from sys import argv, exit
 
-from os.path import join  # Agrega esta línea para importar 'join'
 from os.path import join, isdir
 
 minecraft_directory = get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
@@ -41,9 +44,11 @@ class LaunchThread(QThread):
     def update_progress_label(self, value):
         self.progress_label = value
         self.progress_update_signal.emit(self.progress, self.progress_max, self.progress_label)
+    
     def update_progress(self, value):
         self.progress = value
         self.progress_update_signal.emit(self.progress, self.progress_max, self.progress_label)
+    
     def update_progress_max(self, value):
         self.progress_max = value
         self.progress_update_signal.emit(self.progress, self.progress_max, self.progress_label)
@@ -51,9 +56,17 @@ class LaunchThread(QThread):
     def run(self):
         self.state_update_signal.emit(True)
 
-        install_minecraft_version(versionid=self.version_id, minecraft_directory=minecraft_directory, callback={ 'setStatus': self.update_progress_label, 'setProgress': self.update_progress, 'setMax': self.update_progress_max })
+        install_minecraft_version(
+            versionid=self.version_id,
+            minecraft_directory=minecraft_directory,
+            callback={
+                'setStatus': self.update_progress_label,
+                'setProgress': self.update_progress,
+                'setMax': self.update_progress_max
+            }
+        )
 
-        if self.username == '':
+        if not self.username:
             self.username = generate_username()[0]
         
         options = {
@@ -62,7 +75,15 @@ class LaunchThread(QThread):
             'token': ''
         }
 
-        call(get_minecraft_command(version=self.version_id, minecraft_directory=minecraft_directory, options=options))
+        process = Popen(
+            get_minecraft_command(
+                version=self.version_id,
+                minecraft_directory=minecraft_directory,
+                options=options
+            ),
+            creationflags=CREATE_NO_WINDOW
+        )
+        process.wait()
         self.state_update_signal.emit(False)
 
 class MainWindow(QMainWindow):
@@ -78,11 +99,9 @@ class MainWindow(QMainWindow):
         self.logo.setPixmap(QPixmap('assets/title.png'))
         self.logo.setScaledContents(True)
 
-        # app en ventana
         self.setWindowIcon(QIcon('assets/215446.ico'))
         self.setWindowTitle("qt_version-1.1")
 
-        # app en pantalla completa
         self.showMaximized()
 
         self.titlespacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
@@ -91,12 +110,12 @@ class MainWindow(QMainWindow):
         self.username.setPlaceholderText('Username')
 
         self.version_select = QComboBox(self.centralwidget)
-        self.version_select.addItem("Available Minecraft Versions")  # Opción predeterminada
-        self.load_available_versions()  # Llamada a la función para cargar las versiones disponibles
+        self.version_select.addItem("Available Minecraft Versions")
+        self.load_available_versions()
 
         self.downloaded_version_select = QComboBox(self.centralwidget)
-        self.downloaded_version_select.addItem("Downloaded Minecraft Versions")  # Opción predeterminada
-        self.load_downloaded_versions()  # Llamada a la función para cargar las versiones descargadas
+        self.downloaded_version_select.addItem("Downloaded Minecraft Versions")
+        self.load_downloaded_versions()
 
         self.progress_spacer = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
 
@@ -135,10 +154,7 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(self.centralwidget)
 
-        # Cargar el nombre de usuario guardado
         self.load_username()
-
-        # Historial de nombres de usuario
         self.history = []
 
     def load_username(self):
@@ -172,7 +188,6 @@ class MainWindow(QMainWindow):
         self.start_progress_label.setText(label) 
 
     def load_available_versions(self):
-        # Obtiene la lista de versiones disponibles, excluyendo snapshots, pre-releases, alpha y beta
         available_versions = sorted(
             [version['id'] for version in get_version_list() if 
              'snapshot' not in version['type'].lower() and 
@@ -182,42 +197,32 @@ class MainWindow(QMainWindow):
             key=self.version_sort_key
         )
 
-        # Llena el ComboBox con las versiones disponibles
         self.version_select.clear()
-        self.version_select.addItem("Available Minecraft Versions")  # Opción predeterminada
+        self.version_select.addItem("Available Minecraft Versions")
         self.version_select.addItems(available_versions)
 
     def load_downloaded_versions(self):
-        # Obtiene la ruta de la carpeta de versiones de Minecraft
         versions_folder = join(minecraft_directory, 'versions')
 
         try:
-            # Intenta obtener las carpetas de versiones instaladas
             downloaded_versions = sorted([f for f in os.listdir(versions_folder) if isdir(join(versions_folder, f))], key=self.version_sort_key)
         except FileNotFoundError:
-            # Si la carpeta no existe, muestra un mensaje y sale de la función
             QMessageBox.warning(self, "Warning", "Minecraft versions folder not found. Make sure DynamoLauncher is set up correctly.")
             return
 
-        # Llena el ComboBox con las versiones instaladas
         self.downloaded_version_select.clear()
-        self.downloaded_version_select.addItem("Downloaded Minecraft Versions")  # Opción predeterminada
+        self.downloaded_version_select.addItem("Downloaded Minecraft Versions")
         self.downloaded_version_select.addItems(downloaded_versions)
 
     def version_sort_key(self, version):
-        # Función de clave para ordenar versiones
         try:
-            # Intenta convertir las partes de la versión a enteros
             return tuple(map(int, version.split('.')))
         except ValueError:
-            # Si hay un error al convertir a enteros, devuelve una tupla vacía
             return tuple()
 
     def launch_game(self):
-        # Guardar el nombre de usuario antes de lanzar el juego
         self.save_username()
 
-        # Verificar si se ha seleccionado una versión
         selected_version = None
         if self.version_select.currentIndex() > 0:
             selected_version = self.version_select.currentText()
