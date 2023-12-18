@@ -1,11 +1,10 @@
-from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt, QSettings
+from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt, QSettings, QTimer
 from PyQt5.QtWidgets import (
     QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit,
     QComboBox, QSpacerItem, QSizePolicy, QProgressBar,
     QPushButton, QApplication, QMainWindow, QMessageBox
 )
-from PyQt5.QtGui import QPixmap, QIcon
-import os
+from PyQt5.QtGui import QPixmap, QIcon, QPalette, QColor
 
 from minecraft_launcher_lib.utils import get_minecraft_directory, get_version_list
 from minecraft_launcher_lib.install import install_minecraft_version
@@ -18,6 +17,7 @@ from subprocess import Popen, CREATE_NO_WINDOW
 from sys import argv, exit
 
 from os.path import join, isdir
+import os
 
 minecraft_directory = get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
 
@@ -101,21 +101,43 @@ class MainWindow(QMainWindow):
 
         self.setWindowIcon(QIcon('assets/215446.ico'))
         self.setWindowTitle("DynamoLauncher V1.1")
-
-        self.showMaximized()
+        
 
         self.titlespacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
+        # Estilo para QLineEdit
+        line_edit_style = (
+            "QLineEdit {"
+            "   background-color: #ecf0f1;"
+            "   border: 1px solid #bdc3c7;"
+            "   border-radius: 4px;"
+            "   padding: 5px;"
+            "}"
+        )
+
+        # Estilo para QComboBox
+        combo_box_style = (
+            "QComboBox {"
+            "   background-color: #ecf0f1;"
+            "   border: 1px solid #bdc3c7;"
+            "   border-radius: 4px;"
+            "   padding: 5px;"
+            "}"
+        )
+
         self.username = QLineEdit(self.centralwidget)
         self.username.setPlaceholderText('Username')
+        self.username.setStyleSheet(line_edit_style)
 
         self.version_select = QComboBox(self.centralwidget)
         self.version_select.addItem("Available Minecraft Versions")
         self.load_available_versions()
+        self.version_select.setStyleSheet(combo_box_style)
 
         self.downloaded_version_select = QComboBox(self.centralwidget)
         self.downloaded_version_select.addItem("Downloaded Minecraft Versions")
         self.load_downloaded_versions()
+        self.downloaded_version_select.setStyleSheet(combo_box_style)
 
         self.progress_spacer = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
 
@@ -127,13 +149,17 @@ class MainWindow(QMainWindow):
         self.start_progress.setProperty('value', 24)
         self.start_progress.setVisible(False)
 
+        # Botón de inicio
         self.start_button = QPushButton(self.centralwidget)
         self.start_button.setText('Play')
         self.start_button.clicked.connect(self.launch_game)
+        self.apply_button_style(self.start_button)
 
+        # Botón de historial
         self.history_button = QPushButton(self.centralwidget)
         self.history_button.setText('User History')
         self.history_button.clicked.connect(self.show_user_history)
+        self.apply_button_style(self.history_button)
 
         self.vertical_layout = QVBoxLayout(self.centralwidget)
         self.vertical_layout.setContentsMargins(15, 15, 15, 15)
@@ -236,19 +262,38 @@ class MainWindow(QMainWindow):
         self.launch_thread.launch_setup_signal.emit(selected_version, self.username.text())
         self.launch_thread.start()
 
+    def apply_button_style(self, button):
+        button_style = (
+            "QPushButton {"
+            "   background-color: #4CAF50;"  # Color de fondo
+            "   border: none;"
+            "   color: white;"
+            "   padding: 10px 20px;"
+            "   text-align: center;"
+            "   text-decoration: none;"
+            "   font-size: 16px;"
+            "   margin: 4px 2px;"
+            "   border-radius: 8px;"  # Bordes redondeados
+            "}"
+            "QPushButton:hover {"
+            "   background-color: #45a049;"  # Cambio de color al pasar el ratón
+            "}"
+        )
+        button.setStyleSheet(button_style)
+
 def main():
     QApplication.setAttribute(Qt.ApplicationAttribute.AA_EnableHighDpiScaling, True)
 
     app = QApplication(argv)
     window = MainWindow()
+    window.showMaximized()
     window.show()
+
 
     exit(app.exec_())
 
 if __name__ == '__main__':
     main()
-
-
 
 # MIT License
 
