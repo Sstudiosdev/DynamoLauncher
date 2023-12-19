@@ -100,6 +100,27 @@ class SettingsDialog(QDialog):
         self.layout = QVBoxLayout(self)
         self.layout.addWidget(self.dark_mode_checkbox)
 
+        self.apply_button = QPushButton("Aplicar", self)
+        self.apply_button.clicked.connect(self.apply_changes)
+
+        self.close_button = QPushButton("Cerrar", self)
+        self.close_button.clicked.connect(self.close_dialog)
+
+        self.layout.addWidget(self.apply_button)
+        self.layout.addWidget(self.close_button)
+
+        self.save_changes = False
+
+    def apply_changes(self):
+        self.save_changes = True
+        self.accept()
+
+    def close_dialog(self):
+        if not self.save_changes:
+            self.dark_mode_checkbox.setChecked(not self.dark_mode_checkbox.isChecked())
+
+        self.reject()
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -121,7 +142,6 @@ class MainWindow(QMainWindow):
 
         self.titlespacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        # Estilo para QLineEdit
         line_edit_style = (
             "QLineEdit {"
             "   background-color: #ecf0f1;"
@@ -131,7 +151,6 @@ class MainWindow(QMainWindow):
             "}"
         )
 
-        # Estilo para QComboBox
         combo_box_style = (
             "QComboBox {"
             "   background-color: #ecf0f1;"
@@ -165,13 +184,11 @@ class MainWindow(QMainWindow):
         self.start_progress.setProperty('value', 24)
         self.start_progress.setVisible(False)
 
-        # Botón de inicio
         self.start_button = QPushButton(self.centralwidget)
         self.start_button.setText('Play')
         self.start_button.clicked.connect(self.launch_game)
         self.apply_button_style(self.start_button)
 
-        # Botón de historial
         self.history_button = QPushButton(self.centralwidget)
         self.history_button.setText('User History')
         self.history_button.clicked.connect(self.show_user_history)
@@ -199,11 +216,9 @@ class MainWindow(QMainWindow):
         self.load_username()
         self.history = []
 
-        # Menú de configuración
-        self.menuBar().setNativeMenuBar(False)  # Para sistemas operativos que no son macOS
+        self.menuBar().setNativeMenuBar(False)
         self.settings_menu = self.menuBar().addMenu("Configuración")
 
-        # Opción para abrir el cuadro de diálogo de configuración
         self.open_settings_action = QAction("Abrir Configuración", self)
         self.open_settings_action.triggered.connect(self.open_settings_dialog)
         self.settings_menu.addAction(self.open_settings_action)
@@ -292,7 +307,7 @@ class MainWindow(QMainWindow):
     def apply_button_style(self, button):
         button_style = (
             "QPushButton {"
-            "   background-color: #0072f5;"  # Color de fondo
+            "   background-color: #0072f5;"
             "   border: none;"
             "   color: white;"
             "   padding: 10px 20px;"
@@ -300,10 +315,10 @@ class MainWindow(QMainWindow):
             "   text-decoration: none;"
             "   font-size: 16px;"
             "   margin: 4px 2px;"
-            "   border-radius: 8px;"  # Bordes redondeados
+            "   border-radius: 8px;"
             "}"
             "QPushButton:hover {"
-            "   background-color: #1471db;"  # Cambio de color al pasar el ratón
+            "   background-color: #1471db;"
             "}"
         )
         button.setStyleSheet(button_style)
@@ -318,13 +333,11 @@ class MainWindow(QMainWindow):
 
     def update_theme(self):
         if self.dark_mode:
-            # Configuración del tema oscuro
             self.centralwidget.setStyleSheet(
                 "background-color: #2e2e2e;"
                 "color: #ffffff;"
             )
         else:
-            # Configuración del tema claro
             self.centralwidget.setStyleSheet(
                 "background-color: #ffffff;"
                 "color: #000000;"
@@ -333,7 +346,7 @@ class MainWindow(QMainWindow):
 
 def main():
     QApplication.setAttribute(Qt.ApplicationAttribute.AA_EnableHighDpiScaling, True)
-
+    
     app = QApplication([])
     window = MainWindow()
     window.showMaximized()
