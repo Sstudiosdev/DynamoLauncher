@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamo Launcher</title>
+    <link rel="icon" type="image/x-icon" href="/website/resources/mc1.ico">
+    <link rel="stylesheet" href="/website/css/style.css">
+    <script src="https://kit.fontawesome.com/e4807bb23d.js" crossorigin="anonymous"></script>
+    <link
+    rel="stylesheet"
+    data-purpose="Layout StyleSheet"
+    title="Web Awesome"
+    href="/css/app-wa-02670e9412103b5852dcbe140d278c49.css?vsn=d"
+  >
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
+    >
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css"
+    >
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css"
+    >
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css"
+    >
+</head>
+<body>
+  <nav>
+    <div style="cursor:pointer;" onclick="home()">
+      <img class="content" src="/website/resources/icon.webp" height="50px" width="50px" alt="eClient Logo">
+      <h1 class="id">Dynamo</h1>
+    </div>
+      <a href="https://github.com/Sstudiosdev/DynamoLauncher" class="rightboil">GitHub</a>
+      <a class='rightboi' href='/website/support.html'>Support</a>
+      <a class='rightboi' href='/website/download.html'>Downloads</a>
+      <i onclick="menu()" id="bars" class="fa-solid fa-bars fa-2x"></i>
+  </nav>
+  <div style="margin-top:-110px;" class="menu" id="menu">
+    <ul>
+      <li><a class='boi' href='/website/download.html'>Downloads</a></li>
+      <li><a class='boi' href='/website/support.html'>Support</a></li>
+      <li><a onclick="github()" class="boi">GitHub</a></li>
+    </ul>
+  </div>
+    <center>
+        <h1 style="margin-top:200px;font-size:50px;">The page you're looking for doesn't exist.</h1>
+        <p style="font-size:20px;">We searched everywhere.</p>
+        <button onclick="home()" class="download"><i style="margin-right:20px;" class="fa-solid fa-house"></i>Home</button>
+    </center>
+    <div style="margin-top:90px;position: fixed;
+    left: 0;
+    bottom: 0;" class="footer">
+        <center>
+          <h2>Made by <a style="text-decoration: underline;color:white;" href="https://sstudiosdev.github.io/">Sstudios</a>.</h2>
+          <p style="font-size:18px;">Check out Dynamo on <a style="text-decoration: underline;color:white;" href="https://github.com/Sstudiosdev/DynamoLauncher">GitHub</a>.</p>
+        </center>
+      </div>
+    <script>
+        function home(){
+            window.location.href = "index.html";
+        }
+        function menu(){
+          let x = document.getElementById("menu");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+    </script>
+</body>
+</html>

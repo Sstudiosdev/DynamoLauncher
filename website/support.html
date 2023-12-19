@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamo Launcher</title>
+    <link rel="icon" type="image/x-icon" href="/website/resources/mc1.ico">
+    <link rel="stylesheet" href="/website/css/style.css">
+    <script src="https://kit.fontawesome.com/e4807bb23d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+      <div style="cursor:pointer;" onclick="home()">
+        <img class="content" src="/website/resources/icon.webp" height="50px" width="50px" alt="eClient Logo">
+        <h1 class="id">Dynamo</h1>
+      </div>
+        <a href="https://github.com/Sstudiosdev/DynamoLauncher" class="rightboil">GitHub</a>
+        <a class='rightboi' href='/website/support.html'>Support</a>
+        <a class='rightboi' href='/website/download.html'>Downloads</a>
+        <i onclick="menu()" id="bars" class="fa-solid fa-bars fa-2x"></i>
+    </nav>
+    <div class="menu" id="menu">
+      <ul>
+        <li><a class='boi' href='/website/download.html'>Downloads</a></li>
+        <li><a class='boi' href='/website/support.html'>Support</a></li>
+        <li><a onclick="github()" class="boi">GitHub</a></li>
+      </ul>
+    </div>
+    
+    <div class="oops">
+      <h1 class="down">FAQ</h1>
+      <center>
+        <div id="first" class="first">
+          <h2>Dynamo is free?</h2>
+          <p class="con" style="font-size:18px;margin-top:30px;font-weight:bold;letter-spacing: 0px;">Yes, Dynamo Lancher is totally free.</p>
+          <p class="con" style="font-size:18px;">so rest assured that you will not be asked to buy anything.</p>
+          
+          <hr class="break">
+        </div>
+        <div id="first" class="first">
+          <h2>Dynamo is safe?</h2>
+          <p class="con" style="font-size:18px;margin-top:30px;font-weight:bold;letter-spacing: 0px;">Dynamo is totally safe if it is from the official site so you will not be in danger of getting malware and remember to download the launcher from the official site.</p>
+          <p class="con" style="font-size:18px;">if you have knowledge in Python you can use the launcher source code without any problem <a style="text-decoration: underline;color:white;" href="https://github.com/Sstudiosdev/DynamoLauncher">here</a>.</p>
+          
+          <hr class="break">
+        </div>
+        <div id="first" class="first">
+          <h2>Does it support optifine or forge?</h2>
+          <p class="con" style="font-size:18px;margin-top:30px;font-weight:bold;letter-spacing: 0px;">That's right !</p>
+          <p class="con" style="font-size:18px;">There are popular Forge and Fabric versions in the launcher that can be installed automatically in just a few clicks. You can also install Forge and Fabric manually, just like with the official launcher.</p>
+          
+          <hr class="break">
+        </div>
+        <div id="first" class="first">
+          <h2>Can I change my skin in Dynamo?</h2>
+          <p class="con" style="font-size:18px;margin-top:30px;font-weight:bold;letter-spacing: 0px;">Yeah, of course!</p>
+          <p class="con" style="font-size:18px;">To learn more, see <a style="text-decoration: underline;color:white;" href="https://github.com/Sstudiosdev/DynamoLauncher">this</a>.</p>
+          
+          <hr class="break">
+        </div>
+        <div id="first" class="first">
+          <h2>Why does Dynamo send me malware alerts?</h2>
+          <p class="con" style="font-size:18px;margin-top:30px;font-weight:bold;letter-spacing: 0px;">Well there is something called a false positive.</p>
+          <p class="con" style="font-size:18px;">we are already fixing the issue of false positives with the anti virus that take it as malware if your anti virus takes it as malware do not wait any longer to report it.</p>
+          
+          <hr class="break">
+        </div>
+        <div id="first" class="first">
+          <h2>Minecraft doesn't start or work properly! What should I do?</h2>
+          <p class="con" style="font-size:18px;margin-top:30px;font-weight:bold;letter-spacing: 0px;">It happens :)</p>
+          <p class="con" style="font-size:18px;">Create a issue <a style="text-decoration: underline;color:white;" href="https://github.com/Sstudiosdev/DynamoLauncher/issues">here</a>, or <a style="text-decoration: underline;color:white;" href="mailto:sstudiosdev@gmail.com">reach out</a> to me.</p>
+        </div>
+        
+       
+      </center>
+    </div>
+    <div class="alt1" >
+        <h1 class="sup" >Support</h1>
+        <center>
+            <p style="font-size: 20px;">If you have any query or problem, create an issue <a style="text-decoration: underline;color:white;" href="https://github.com/Sstudiosdev/DynamoLauncher/issues">here</a>.<br/>Or you could reach out to me <a style="text-decoration: underline;color:white;" href="mailto:sstudiosdev@gmail.com">here</a>.</p>
+        </center>
+    </div>
+    <div style="margin-top:90px;" class="footer">
+        <center>
+          <h2>Made by <a style="text-decoration: underline;color:white;" href="https://sstudiosdev.github.io/">Sstudios</a>.</h2>
+          <p style="font-size:18px;">Check out Dynamo on <a style="text-decoration: underline;color:white;" href="https://github.com/Sstudiosdev/DynamoLauncher">GitHub</a>.</p>
+        </center>
+      </div>
+    <script>
+      function home(){
+            window.location.href = "index.html";
+        }
+        function menu(){
+          let x = document.getElementById("menu");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+            x.style.animation = "fadeOutAnimation ease 0.2s";
+            x.style.animationIterationCount = "1";
+            x.style.animationFillMode = "forwards";
+          }
+        }
+    </script>
+</body>
+</html>

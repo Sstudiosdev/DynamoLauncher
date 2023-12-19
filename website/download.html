@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamo Launcher</title>
+    <link rel="icon" type="image/x-icon" href="/website/resources/mc1.ico">
+    <link rel="stylesheet" href="/website/css/style.css">
+    <script src="https://kit.fontawesome.com/e4807bb23d.js" crossorigin="anonymous"></script>
+    <link
+    rel="stylesheet"
+    data-purpose="Layout StyleSheet"
+    title="Web Awesome"
+    href="/css/app-wa-02670e9412103b5852dcbe140d278c49.css?vsn=d"
+  >
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
+    >
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css"
+    >
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css"
+    >
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css"
+    >
+</head>
+<body>
+    <nav>
+        <div style="cursor:pointer;" onclick="home()">
+            <img class="content" src="/website/resources/icon.webp" height="50px" width="50px" alt="Dynamo Logo">
+            <h1 class="id">Dynamo</h1>
+          </div>
+        <a href="https://github.com/v-pun215/eClient" class="rightboil">GitHub</a>
+        <a class='rightboi' href='/website/support.html'>Support</a>
+        <a class='rightboi' href='/website/download.html'>Downloads</a>
+        <i onclick="menu()" id="bars" class="fa-solid fa-bars fa-2x"></i>
+    </nav>
+    <div class="menu" id="menu">
+      <ul>
+        <li><a class='boi' href='/website/download.html'>Downloads</a></li>
+        <li><a class='boi' href='/website/support.html'>Support</a></li>
+        <li><a onclick="github()" class="boi">GitHub</a></li>
+      </ul>
+    </div>
+    
+    <div class="screen">
+      <h1 class="down">Downloads</h1>
+      <center>
+        <div id="ban" class="ban" onclick="ban1()">
+            <i style="margin-left:20px;float:left;margin-top:40px;" class="fa-brands fa-windows fa-2xl"></i>
+            <h1 style="float:left;margin-left:20px;">Windows</h1>
+            <i style="float:left;margin-top:40px;margin-left:550px;color:#565c61;" class="fa-sharp fa-regular fa-chevron-left fa-xl"></i>
+        </div>
+        <div id="ban10" class="ban10">
+            <div  onclick="ban10()" style="cursor:pointer;">
+            <i style="margin-left:20px;float:left;margin-top:40px;" class="fa-brands fa-windows fa-2xl"></i>
+            <h1 style="float:left;margin-left:20px;">Windows</h1>
+            <i style="float:left;margin-top:40px;margin-left:550px;color:#565c61;" class="fa-sharp fa-regular fa-chevron-down fa-xl"></i>
+            </div>
+            <button style="margin-left:-155px;z-index: 1;float:left;margin-top:40px;" onclick="download()" class="download"><i style="margin-right:20px;" class="fa-brands fa-windows fa-xl"></i>Download the Installer</button>
+        </div>
+        <div id="ban2" style="margin-top:20px;" class="ban" onclick="ban2()">
+            <i style="margin-left:20px;float:left;margin-top:40px;" class="fa-brands fa-linux fa-2xl"></i>
+            <h1 style="float:left;margin-left:20px;">Linux</h1>
+            <i style="float:left;margin-top:40px;margin-left:607px;color:#565c61;" class="fa-sharp fa-regular fa-chevron-left fa-xl"></i>
+        </div>
+        <div id="ban12" style="margin-top:20px;" class="ban10">
+            <div  onclick="ban12()" style="cursor:pointer;">
+                <i style="margin-left:20px;float:left;margin-top:40px;" class="fa-brands fa-linux fa-2xl"></i>
+                <h1 style="float:left;margin-left:20px;">Linux</h1>
+            <i style="float:left;margin-top:40px;margin-left:607px;color:#565c61;" class="fa-sharp fa-regular fa-chevron-down fa-xl"></i>
+            </div>
+            <button style="margin-left:-100px;z-index: 1;float:left;margin-top:40px;" onclick="oops()" class="download"><i style="margin-right:20px;" class="fa-brands fa-linux fa-xl"></i>Download the Installer</button>
+        </div>
+        <div id="ban3" style="margin-top:20px;" class="ban" onclick="ban3()">
+            <i style="margin-left:20px;float:left;margin-top:40px;" class="fa-brands fa-apple fa-2xl"></i>
+            <h1 style="float:left;margin-left:20px;">macOS</h1>
+            <i style="float:left;margin-top:40px;margin-left:584px;color:#565c61;" class="fa-sharp fa-regular fa-chevron-left fa-xl"></i>
+        </div>
+        <div id="ban13" style="margin-top:20px;" class="ban10">
+            <div  onclick="ban13()" style="cursor:pointer;">
+                <i style="margin-left:20px;float:left;margin-top:40px;" class="fa-brands fa-apple fa-2xl"></i>
+                <h1 style="float:left;margin-left:20px;">macOS</h1>
+            <i style="float:left;margin-top:40px;margin-left:584px;color:#565c61;" class="fa-sharp fa-regular fa-chevron-down fa-xl"></i>
+            </div>
+            <button style="margin-left:-120px;z-index: 1;float:left;margin-top:40px;" onclick="oops()" class="download"><i style="margin-right:20px;" class="fa-brands fa-apple fa-xl"></i>Download the Installer</button>
+        </div>
+        <div class="oopsies">
+          <center>
+            <i style="margin-top:20px;" class="fa-solid fa-laptop fa-2x"></i>
+            <h2>Looks like you're browsing from a phone or a tablet.</h2>
+            <p> eClient only supports Windows, Mac and Linux.</p>
+          </center>
+        </div>
+      </center>
+    </div>
+    <div class="alt" >
+        <h1 style="font-size:50px;margin-left:80px;margin-top:105px;" >Alternative Downloads</h1>
+        <center>
+            <p style="font-size: 20px;">Check out Dynamo's <a  style="text-decoration: underline;color:white;" href="https://github.com/Sstudiosdev/DynamoLauncher">GitHub</a> to find older and beta releases.</p>
+        </center>
+    </div>
+    <div style="margin-top:0px;" class="footer">
+        <center>
+          <h2>Made by <a style="text-decoration: underline;color:white;" href="https://sstudiosdev.github.io/">Sstudios</a>.</h2>
+          <p style="font-size:18px;">Check out Dynamo on <a style="text-decoration: underline;color:white;" href="https://github.com/Sstudiosdev/DynamoLauncher">GitHub</a>.</p>
+        </center>
+      </div>
+    <script>
+        function ban1(){
+            document.getElementById("ban").style.display = "none";
+            document.getElementById("ban10").style.display = "block";
+        }
+        function ban2(){
+            document.getElementById("ban2").style.display = "none";
+            document.getElementById("ban12").style.display = "block";
+        }
+        function ban3(){
+            document.getElementById("ban3").style.display = "none";
+            document.getElementById("ban13").style.display = "block";
+        }
+        function ban10(){
+            document.getElementById("ban").style.display = "block";
+            document.getElementById("ban10").style.display = "none";
+        }
+        function ban12(){
+            document.getElementById("ban2").style.display = "block";
+            document.getElementById("ban12").style.display = "none";
+        }
+        function ban13(){
+            document.getElementById("ban3").style.display = "block";
+            document.getElementById("ban13").style.display = "none";
+        }
+        function download(){
+          window.location.href = "https://github.com/Sstudiosdev/DynamoLauncher/releases/download/1.1/DynamoLauncher_setup.exe";
+        }
+        function oops(){
+          alert("Coming soon!")
+        }
+        function home(){
+            window.location.href = "index.html";
+        }
+        function menu(){
+          let x = document.getElementById("menu");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+            x.style.animation = "fadeOutAnimation ease 0.2s";
+            x.style.animationIterationCount = "1";
+            x.style.animationFillMode = "forwards";
+          }
+        }
+    </script>
+</body>
+</html>

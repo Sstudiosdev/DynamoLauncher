@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamo Launcher</title>
+    <link rel="icon" type="image/x-icon" href="/website/resources/mc1.ico">
+    <link rel="stylesheet" href="/website/css/style.css">
+    <script src="https://kit.fontawesome.com/e4807bb23d.js" crossorigin="anonymous"></script>
+    <link
+    rel="stylesheet"
+    data-purpose="Layout StyleSheet"
+    title="Web Awesome"
+    href="/css/app-wa-02670e9412103b5852dcbe140d278c49.css?vsn=d"
+  >
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
+    >
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css"
+    >
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css"
+    >
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css"
+    >
+</head>
+<body>
+  <!--<div id="note" style="padding:5px; background-color:#121212;text-align:center;position:fixed;width:100%;z-index: 1; color:white;">
+    <style>
+        .close {
+            position: fixed;
+            top: 0;
+            right:0;
+            margin-right:10px;
+            z-index: 999;
+            margin-top:8px;
+            font-size: 20px;transition: all .2s ease-in-out;
+            
+        }
+        .close:hover {
+          color:red;
+          cursor:pointer;
+        }
+    </style>
+    <p class="close" onclick="cl()" style="float:right;"><i class="fa-solid fa-xmark fa-lg" aria-hidden="true"></i></p>
+    <p>Version 1.8 released! Learn more  <a style="font-size:16px; color:white;" href="https://github.com/v-pun215/eClient/releases/v1.8">here</a>.</p>
+</div>/-->
+    <nav id="ugh">
+      <div style="cursor:pointer;" onclick="home()">
+        <img class="content" src="/website/resources/icon.webp" height="50px" width="50px" alt="Dynamo Logo">
+        <h1 class="id">Dynamo</h1>
+      </div>
+        <a href="https://github.com/Sstudiosdev/DynamoLauncher" class="rightboil">GitHub</a>
+        <a class='rightboi' href='/website/support.html'>Support</a>
+        <a class='rightboi' href='/website/download.html'>Downloads</a>
+        <i onclick="menu()" id="bars" class="fa-solid fa-bars fa-2x"></i>
+    </nav>
+    <div class="menu" id="menu">
+      <ul>
+        <li><a class='boi' href='/website/download.html'>Downloads</a></li>
+        <li><a class='boi' href='/website/support.html'>Support</a></li>
+        <li><a onclick="github()" class="boi">GitHub</a></li>
+      </ul>
+    </div>
+    <div class="banner">
+        <center>
+            <h1 style="font-size:90px;margin-top:200px;">DynamoLauncher</h1>
+            <p style="font-size:30px;margin-top:-25px;font-family:'SF';letter-spacing: -1.5px;">Minecraft without complications, fast and stable.</p>
+            <button onclick="download()" class="download"><i style="margin-right:20px;" class="fa-brands fa-windows fa-xl"></i>Download for Windows</button>
+            <button onclick="downloads()" style="width:80px;margin-left:10px;" id="killme" class="download"><i class="fa-light fa-ellipsis-vertical fa-2xl"></i></button>
+        </center>
+    </div>
+    <div class="about">
+      <h1 id="cen">About</h1>
+      <p id="metoo" >Dynamo began as a personal endeavor initiated by myself, <a style="text-decoration: underline;color:white;" href="https://github.com/staFF6773">not_staff</a>. I enjoyed working on it so much that <br/>it's now more like my main project. It is a Minecraft Launcher made with Python. I wanted to<br/> test the limits of the Python programming language and so here we are. Dynamo is a pretty <br/>stable launcher, being a fork of another launcher, <a style="text-decoration: underline;color:white;" href="https://minecraft-launcher-lib.readthedocs.io/en/stable/introduction.html">minecraft-launcher-lib</a>. It is compatible with all Minecraft <br/>versions. It even supports mods (Forge and Fabric).</p>
+      <img id="idiot" src="/website/resources/icon.webp" width="200px" height="200px" style="float:right;margin-top:-190px;margin-right:50px;"
+    </div>
+    <div class="screen">
+      <h1 id="cen">Screenshots</h1>
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 10</div>
+          <img src="img/1.png" style="width:100%">
+          
+        </div>
+      
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 10</div>
+          <img src="img/2.png" style="width:100%">
+          
+        </div>
+      
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 10</div>
+          <img src="img/3.png" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 10</div>
+          <img src="img/4.png" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">5 / 10</div>
+          <img src="img/5.png" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">6 / 10</div>
+          <img src="img/6.png" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">7 / 10</div>
+          <img src="img/7.png" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">8 / 10</div>
+          <img src="img/8.png" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">9 / 10</div>
+          <img src="img/9.png" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">10 / 10</div>
+          <img src="img/10.png" style="width:100%">
+        </div>
+      
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)"><i class="fa-solid fa-angle-left"></i></a>
+        <a class="next" onclick="plusSlides(1)"><i class="fa-solid fa-angle-right"></i></a>
+      </div>
+      <br>
+      
+      <!-- The dots/circles -->
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+        <span class="dot" onclick="currentSlide(8)"></span>
+        <span class="dot" onclick="currentSlide(9)"></span>
+        <span class="dot" onclick="currentSlide(10)"></span>
+      </div>
+      </div>
+      <div class="footer">
+        <center>
+          <h2>Made by <a style="text-decoration: underline;color:white;" href="https://sstudiosdev.github.io/">Sstudios</a>.</h2>
+          <p style="font-size:18px;">Check out Dynamo on <a style="text-decoration: underline;color:white;" href="https://github.com/Sstudiosdev/DynamoLauncher">GitHub</a>.</p>
+        </center>
+      </div>
+      <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          if (n > slides.length) {slideIndex = 1}    
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+        }
+        function download(){
+          window.location.href = "https://github.com/Sstudiosdev/DynamoLauncher/releases/download/1.1/DynamoLauncher_setup.exe";
+        }
+        function downloads(){
+          window.location.href = "/website/download.html";
+        }
+        function home(){
+            window.location.href = "index.html";
+        }
+        function menu(){
+          let x = document.getElementById("menu");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+            x.style.animation = "fadeOutAnimation ease 0.2s";
+            x.style.animationIterationCount = "1";
+            x.style.animationFillMode = "forwards";
+          } 
+        }
+        function cl() {
+                document.getElementById("note").style.display = "none";
+                document.getElementById("ugh").style.marginTop = "0px";
+            }
+        </script>
+        
+</body>
+</html>
