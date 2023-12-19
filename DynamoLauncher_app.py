@@ -265,7 +265,7 @@ class MainWindow(QMainWindow):
     def apply_button_style(self, button):
         button_style = (
             "QPushButton {"
-            "   background-color: #4CAF50;"  # Color de fondo
+            "   background-color: #0072f5;"  # Color de fondo
             "   border: none;"
             "   color: white;"
             "   padding: 10px 20px;"
@@ -276,7 +276,7 @@ class MainWindow(QMainWindow):
             "   border-radius: 8px;"  # Bordes redondeados
             "}"
             "QPushButton:hover {"
-            "   background-color: #45a049;"  # Cambio de color al pasar el ratón
+            "   background-color: #1471db;"  # Cambio de color al pasar el ratón
             "}"
         )
         button.setStyleSheet(button_style)
