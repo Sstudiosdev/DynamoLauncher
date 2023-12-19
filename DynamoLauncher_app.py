@@ -1,10 +1,10 @@
-from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt, QSettings, QTimer
+from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt, QSettings
 from PyQt5.QtWidgets import (
-    QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit,
+    QWidget, QVBoxLayout, QLabel, QLineEdit,
     QComboBox, QSpacerItem, QSizePolicy, QProgressBar,
-    QPushButton, QApplication, QMainWindow, QMessageBox
+    QPushButton, QApplication, QMainWindow, QMessageBox, QDialog
 )
-from PyQt5.QtGui import QPixmap, QIcon, QPalette, QColor
+from PyQt5.QtGui import QPixmap, QIcon
 
 from minecraft_launcher_lib.utils import get_minecraft_directory, get_version_list
 from minecraft_launcher_lib.install import install_minecraft_version
@@ -14,12 +14,11 @@ from random_username.generate import generate_username
 from uuid import uuid1
 
 from subprocess import Popen, CREATE_NO_WINDOW
-from sys import argv, exit
-
 from os.path import join, isdir
 import os
 
 minecraft_directory = get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
+
 
 class LaunchThread(QThread):
     launch_setup_signal = pyqtSignal(str, str)
@@ -40,15 +39,15 @@ class LaunchThread(QThread):
     def launch_setup(self, version_id, username):
         self.version_id = version_id
         self.username = username
-    
+
     def update_progress_label(self, value):
         self.progress_label = value
         self.progress_update_signal.emit(self.progress, self.progress_max, self.progress_label)
-    
+
     def update_progress(self, value):
         self.progress = value
         self.progress_update_signal.emit(self.progress, self.progress_max, self.progress_label)
-    
+
     def update_progress_max(self, value):
         self.progress_max = value
         self.progress_update_signal.emit(self.progress, self.progress_max, self.progress_label)
@@ -68,7 +67,7 @@ class LaunchThread(QThread):
 
         if not self.username:
             self.username = generate_username()[0]
-        
+
         options = {
             'username': self.username,
             'uuid': str(uuid1()),
@@ -86,6 +85,23 @@ class LaunchThread(QThread):
         process.wait()
         self.state_update_signal.emit(False)
 
+
+class SettingsDialog(QDialog):
+    def __init__(self, parent=None):
+        super(SettingsDialog, self).__init__(parent)
+
+        self.setWindowTitle("Configuración")
+        self.setGeometry(parent.geometry().center().x() - 150, parent.geometry().center().y() - 150, 300, 300)
+
+        # Agrega contenido al diálogo según tus necesidades
+
+        self.label = QLabel("¡Bienvenido a la configuración!", self)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+
+        self.layout = QVBoxLayout(self)
+        self.layout.addWidget(self.label)
+
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -101,7 +117,6 @@ class MainWindow(QMainWindow):
 
         self.setWindowIcon(QIcon('assets/215446.ico'))
         self.setWindowTitle("DynamoLauncher V1.1")
-        
 
         self.titlespacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -161,6 +176,12 @@ class MainWindow(QMainWindow):
         self.history_button.clicked.connect(self.show_user_history)
         self.apply_button_style(self.history_button)
 
+        # Botón de configuración
+        self.settings_button = QPushButton(self.centralwidget)
+        self.settings_button.setText('Configuración')
+        self.settings_button.clicked.connect(self.open_settings_dialog)
+        self.apply_button_style(self.settings_button)
+
         self.vertical_layout = QVBoxLayout(self.centralwidget)
         self.vertical_layout.setContentsMargins(15, 15, 15, 15)
         self.vertical_layout.addWidget(self.logo, 0, Qt.AlignmentFlag.AlignHCenter)
@@ -169,10 +190,11 @@ class MainWindow(QMainWindow):
         self.vertical_layout.addWidget(self.version_select)
         self.vertical_layout.addWidget(self.downloaded_version_select)
         self.vertical_layout.addItem(self.progress_spacer)
-        self.vertical_layout.addWidget(self.start_progress_label) 
+        self.vertical_layout.addWidget(self.start_progress_label)
         self.vertical_layout.addWidget(self.start_progress)
         self.vertical_layout.addWidget(self.start_button)
         self.vertical_layout.addWidget(self.history_button)
+        self.vertical_layout.addWidget(self.settings_button)
 
         self.launch_thread = LaunchThread()
         self.launch_thread.state_update_signal.connect(self.state_update)
@@ -211,14 +233,14 @@ class MainWindow(QMainWindow):
     def update_progress(self, progress, max_progress, label):
         self.start_progress.setValue(progress)
         self.start_progress.setMaximum(max_progress)
-        self.start_progress_label.setText(label) 
+        self.start_progress_label.setText(label)
 
     def load_available_versions(self):
         available_versions = sorted(
-            [version['id'] for version in get_version_list() if 
-             'snapshot' not in version['type'].lower() and 
-             'pre' not in version['type'].lower() and 
-             'alpha' not in version['type'].lower() and 
+            [version['id'] for version in get_version_list() if
+             'snapshot' not in version['type'].lower() and
+             'pre' not in version['type'].lower() and
+             'alpha' not in version['type'].lower() and
              'beta' not in version['type'].lower()],
             key=self.version_sort_key
         )
@@ -231,9 +253,11 @@ class MainWindow(QMainWindow):
         versions_folder = join(minecraft_directory, 'versions')
 
         try:
-            downloaded_versions = sorted([f for f in os.listdir(versions_folder) if isdir(join(versions_folder, f))], key=self.version_sort_key)
+            downloaded_versions = sorted([f for f in os.listdir(versions_folder) if isdir(join(versions_folder, f))],
+                                         key=self.version_sort_key)
         except FileNotFoundError:
-            QMessageBox.warning(self, "Warning", "Minecraft versions folder not found. Make sure DynamoLauncher is set up correctly.")
+            QMessageBox.warning(self, "Warning",
+                                "Minecraft versions folder not found. Make sure DynamoLauncher is set up correctly.")
             return
 
         self.downloaded_version_select.clear()
@@ -281,19 +305,23 @@ class MainWindow(QMainWindow):
         )
         button.setStyleSheet(button_style)
 
+    def open_settings_dialog(self):
+        settings_dialog = SettingsDialog(self)
+        settings_dialog.exec_()
+
+
 def main():
     QApplication.setAttribute(Qt.ApplicationAttribute.AA_EnableHighDpiScaling, True)
 
-    app = QApplication(argv)
+    app = QApplication([])
     window = MainWindow()
     window.showMaximized()
-    window.show()
-
-
     exit(app.exec_())
+
 
 if __name__ == '__main__':
     main()
+
 
 # MIT License
 
