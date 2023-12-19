@@ -1,8 +1,8 @@
 from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt, QSettings
 from PyQt5.QtWidgets import (
-    QWidget, QVBoxLayout, QLabel, QLineEdit,
-    QComboBox, QSpacerItem, QSizePolicy, QProgressBar,
-    QPushButton, QApplication, QMainWindow, QMessageBox, QDialog
+    QWidget, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem,
+    QSizePolicy, QProgressBar, QPushButton, QApplication, QMainWindow,
+    QMessageBox, QDialog, QCheckBox, QMenuBar, QAction
 )
 from PyQt5.QtGui import QPixmap, QIcon
 
@@ -93,18 +93,19 @@ class SettingsDialog(QDialog):
         self.setWindowTitle("Configuración")
         self.setGeometry(parent.geometry().center().x() - 150, parent.geometry().center().y() - 150, 300, 300)
 
-        # Agrega contenido al diálogo según tus necesidades
-
-        self.label = QLabel("¡Bienvenido a la configuración!", self)
-        self.label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.dark_mode_checkbox = QCheckBox("Modo oscuro", self)
+        self.dark_mode_checkbox.setChecked(parent.dark_mode)
+        self.dark_mode_checkbox.stateChanged.connect(parent.toggle_dark_mode)
 
         self.layout = QVBoxLayout(self)
-        self.layout.addWidget(self.label)
+        self.layout.addWidget(self.dark_mode_checkbox)
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+
+        self.dark_mode = False
 
         self.resize(300, 283)
         self.centralwidget = QWidget(self)
@@ -176,12 +177,6 @@ class MainWindow(QMainWindow):
         self.history_button.clicked.connect(self.show_user_history)
         self.apply_button_style(self.history_button)
 
-        # Botón de configuración
-        self.settings_button = QPushButton(self.centralwidget)
-        self.settings_button.setText('Configuración')
-        self.settings_button.clicked.connect(self.open_settings_dialog)
-        self.apply_button_style(self.settings_button)
-
         self.vertical_layout = QVBoxLayout(self.centralwidget)
         self.vertical_layout.setContentsMargins(15, 15, 15, 15)
         self.vertical_layout.addWidget(self.logo, 0, Qt.AlignmentFlag.AlignHCenter)
@@ -194,7 +189,6 @@ class MainWindow(QMainWindow):
         self.vertical_layout.addWidget(self.start_progress)
         self.vertical_layout.addWidget(self.start_button)
         self.vertical_layout.addWidget(self.history_button)
-        self.vertical_layout.addWidget(self.settings_button)
 
         self.launch_thread = LaunchThread()
         self.launch_thread.state_update_signal.connect(self.state_update)
@@ -204,6 +198,15 @@ class MainWindow(QMainWindow):
 
         self.load_username()
         self.history = []
+
+        # Menú de configuración
+        self.menuBar().setNativeMenuBar(False)  # Para sistemas operativos que no son macOS
+        self.settings_menu = self.menuBar().addMenu("Configuración")
+
+        # Opción para abrir el cuadro de diálogo de configuración
+        self.open_settings_action = QAction("Abrir Configuración", self)
+        self.open_settings_action.triggered.connect(self.open_settings_dialog)
+        self.settings_menu.addAction(self.open_settings_action)
 
     def load_username(self):
         settings = QSettings('TuOrganizacion', 'TuAplicacion')
@@ -309,6 +312,24 @@ class MainWindow(QMainWindow):
         settings_dialog = SettingsDialog(self)
         settings_dialog.exec_()
 
+    def toggle_dark_mode(self, state):
+        self.dark_mode = state == Qt.CheckState.Checked
+        self.update_theme()
+
+    def update_theme(self):
+        if self.dark_mode:
+            # Configuración del tema oscuro
+            self.centralwidget.setStyleSheet(
+                "background-color: #2e2e2e;"
+                "color: #ffffff;"
+            )
+        else:
+            # Configuración del tema claro
+            self.centralwidget.setStyleSheet(
+                "background-color: #ffffff;"
+                "color: #000000;"
+            )
+
 
 def main():
     QApplication.setAttribute(Qt.ApplicationAttribute.AA_EnableHighDpiScaling, True)
@@ -321,7 +342,6 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 
 # MIT License
 
