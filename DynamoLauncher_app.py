@@ -358,4 +358,4 @@ if __name__ == '__main__':
 
 # MIT License
 
-# Copyright (c) 2023 Sstudios
+# Copyright (c) 2023 Sstudios.
