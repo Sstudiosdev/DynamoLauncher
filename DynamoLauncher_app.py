@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QThread, pyqtSignal, QSize, Qt, QSettings
+from PyQt5.QtCore import QThread, pyqtSignal, Qt, QSettings
 from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem,
     QSizePolicy, QProgressBar, QPushButton, QApplication, QMainWindow,
@@ -128,17 +128,13 @@ class MainWindow(QMainWindow):
 
         self.dark_mode = False
 
-        self.resize(300, 283)
+        self.resize(400, 400)
         self.centralwidget = QWidget(self)
 
         self.logo = QLabel(self.centralwidget)
-        self.logo.setMaximumSize(QSize(256, 37))
-        self.logo.setText('')
+        self.logo.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.logo.setPixmap(QPixmap('assets/title.png'))
         self.logo.setScaledContents(True)
-
-        self.setWindowIcon(QIcon('assets/215446.ico'))
-        self.setWindowTitle("DynamoLauncher v1.2")
 
         self.titlespacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -188,15 +184,17 @@ class MainWindow(QMainWindow):
         self.start_button.setText('Play')
         self.start_button.clicked.connect(self.launch_game)
         self.apply_button_style(self.start_button)
+        self.start_button.setIcon(QIcon('assets/play.png'))
 
         self.history_button = QPushButton(self.centralwidget)
         self.history_button.setText('User History')
         self.history_button.clicked.connect(self.show_user_history)
         self.apply_button_style(self.history_button)
+        self.history_button.setIcon(QIcon('assets/history.png'))
 
         self.vertical_layout = QVBoxLayout(self.centralwidget)
         self.vertical_layout.setContentsMargins(15, 15, 15, 15)
-        self.vertical_layout.addWidget(self.logo, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.vertical_layout.addWidget(self.logo)
         self.vertical_layout.addItem(self.titlespacer)
         self.vertical_layout.addWidget(self.username)
         self.vertical_layout.addWidget(self.version_select)
@@ -329,25 +327,27 @@ class MainWindow(QMainWindow):
 
     def toggle_dark_mode(self, state):
         self.dark_mode = state == Qt.CheckState.Checked
-        self.update_theme()
+        self.apply_theme()
 
-    def update_theme(self):
-        if self.dark_mode:
-            self.centralwidget.setStyleSheet(
-                "background-color: #2e2e2e;"
-                "color: #ffffff;"
-            )
-        else:
-            self.centralwidget.setStyleSheet(
-                "background-color: #ffffff;"
-                "color: #000000;"
-            )
+    def apply_theme(self):
+        dark_mode_style = """
+            background-color: #2e2e2e;
+            color: #ffffff;
+        """
+
+        light_mode_style = """
+            background-color: #ffffff;
+            color: #000000;
+        """
+
+        self.centralwidget.setStyleSheet(dark_mode_style if self.dark_mode else light_mode_style)
 
 
 def main():
     QApplication.setAttribute(Qt.ApplicationAttribute.AA_EnableHighDpiScaling, True)
-    
+
     app = QApplication([])
+    app.setStyle('Fusion')  # Use Fusion style
     window = MainWindow()
     window.showMaximized()
     exit(app.exec_())
@@ -355,6 +355,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 # MIT License
 
