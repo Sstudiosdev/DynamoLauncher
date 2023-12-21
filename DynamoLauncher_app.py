@@ -138,7 +138,7 @@ class MainWindow(QMainWindow):
         self.logo.setScaledContents(True)
 
         self.setWindowIcon(QIcon('assets/215446.ico'))
-        self.setWindowTitle("DynamoLauncher V1.1")
+        self.setWindowTitle("DynamoLauncher v1.2")
 
         self.titlespacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -358,4 +358,4 @@ if __name__ == '__main__':
 
 # MIT License
 
-# Copyright (c) 2023 Sstudios.
+# Copyright (c) 2023 Sstudios
