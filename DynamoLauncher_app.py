@@ -342,7 +342,6 @@ class MainWindow(QMainWindow):
 
         self.centralwidget.setStyleSheet(dark_mode_style if self.dark_mode else light_mode_style)
 
-
 def main():
     QApplication.setAttribute(Qt.ApplicationAttribute.AA_EnableHighDpiScaling, True)
 
