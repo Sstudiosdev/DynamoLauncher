@@ -1,3 +1,5 @@
+# < -------------------- Dependencies -------------------- >
+
 from PyQt5.QtCore import QThread, pyqtSignal, Qt, QSettings
 from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem,
@@ -17,8 +19,9 @@ from subprocess import Popen, CREATE_NO_WINDOW
 from os.path import join, isdir
 import os
 
-minecraft_directory = get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
+# < -------------------- Dependencies -------------------- >
 
+minecraft_directory = get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
 
 class LaunchThread(QThread):
     launch_setup_signal = pyqtSignal(str, str)
