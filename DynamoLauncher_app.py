@@ -1,16 +1,13 @@
-from PyQt5.QtCore import QThread, pyqtSignal, Qt, QTimer, QRect
+from PyQt5.QtCore import (
+    QThread, pyqtSignal, Qt, QTimer, QRect, QEasingCurve, QPropertyAnimation,
+    QParallelAnimationGroup, QPoint, QSettings
+)
 from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem,
     QSizePolicy, QProgressBar, QPushButton, QApplication, QMainWindow,
-    QDialog, QCheckBox, QMessageBox
+    QDialog, QCheckBox, QMessageBox, QAction, QGraphicsOpacityEffect
 )
 from PyQt5.QtGui import QPixmap, QIcon
-from PyQt5.QtWidgets import QAction
-from PyQt5.QtCore import QSettings
-from PyQt5.QtWidgets import QGraphicsOpacityEffect
-from PyQt5.QtCore import QEasingCurve
-from PyQt5.QtCore import QPropertyAnimation
-from PyQt5.QtCore import QParallelAnimationGroup, QPoint
 
 from minecraft_launcher_lib.utils import get_minecraft_directory, get_version_list
 from minecraft_launcher_lib.install import install_minecraft_version
@@ -105,7 +102,7 @@ class SplashScreen(QDialog):
     def update_progress_bar(self):
         current_value = self.progress_bar.value()
         if current_value < 100:
-            self.progress_bar.setValue(current_value + 3)
+            self.progress_bar.setValue(current_value + 2)
             self.start_progress_label.setText(f"Loading: {current_value}%")
         else:
             self.timer.stop()
