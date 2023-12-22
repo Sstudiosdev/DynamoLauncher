@@ -23,7 +23,6 @@ import sys
 
 minecraft_directory = get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
 
-
 class SplashScreen(QDialog):
     def __init__(self):
         super().__init__()
@@ -32,25 +31,25 @@ class SplashScreen(QDialog):
         self.setStyleSheet(
             "QDialog { background-color: black; color: white; border-radius: 100px; }"
             "QLabel { color: white; }"
-            "QProgressBar { color: #3498db; }"  # Color de la barra de progreso
+            "QProgressBar { color: #3498db; }"  # Progress bar color
         )
 
-        # Configurar el ícono
-        icon_pixmap = QPixmap('assets/title2.ico')  # Reemplaza con la ruta de tu ícono
+        # Configure the icon
+        icon_pixmap = QPixmap('assets/title2.ico')  # Replace with the path of your icon
         icon_label = QLabel(self)
         icon_label.setPixmap(icon_pixmap)
-        icon_label.setAlignment(Qt.AlignmentFlag.AlignCenter)  # Centrar horizontal y verticalmente
+        icon_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        # Configurar el texto
+        # Configure the text
         text_label = QLabel(self)
         text_label.setText("DynamoLauncher\nSstudios\n\nStarting Launcher\n")
-        text_label.setAlignment(Qt.AlignmentFlag.AlignCenter)  # Centrar horizontalmente
+        text_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         font = text_label.font()
-        font.setPointSize(24)  # Ajusta el tamaño de fuente según tus necesidades
+        font.setPointSize(24)  # Adjust the font size according to your needs
         text_label.setFont(font)
 
-        # Configurar la barra de carga
+        # Configuring the loading bar
         self.progress_bar = QProgressBar(self)
         self.progress_bar.setMinimum(0)
         self.progress_bar.setMaximum(100)
@@ -59,44 +58,44 @@ class SplashScreen(QDialog):
         # Configurar el texto de progreso
         self.start_progress_label = QLabel(self)
         self.start_progress_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.start_progress_label.setStyleSheet("QLabel { font-size: 16px; }")  # Ajusta el tamaño de fuente según tus necesidades
+        self.start_progress_label.setStyleSheet("QLabel { font-size: 16px; }")  # Adjust the font size according to your needs
 
-        # Configurar el diseño principal
+        # Configure the main design
         main_layout = QVBoxLayout(self)
         main_layout.addWidget(icon_label, 0, Qt.AlignmentFlag.AlignCenter)
         main_layout.addWidget(text_label, 0, Qt.AlignmentFlag.AlignCenter)
         main_layout.addWidget(self.progress_bar, 0, Qt.AlignmentFlag.AlignCenter)
         main_layout.addWidget(self.start_progress_label, 0, Qt.AlignmentFlag.AlignCenter)
 
-        # Eliminar bordes y establecer tamaño mínimo
+        # Remove borders and set minimum size
         self.setWindowFlags(Qt.FramelessWindowHint)
-        self.setMinimumSize(400, 200)  # Puedes ajustar el tamaño según tus necesidades
+        self.setMinimumSize(400, 200)  # You can adjust the size according to your needs
 
-        # Timer para cerrar automáticamente después de 5 segundos
+        # Timer to close automatically after 5 seconds
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_progress_bar)
-        self.timer.start(50)  # Actualizar la barra de progreso cada 50 milisegundos
+        self.timer.start(50)  # Update progress bar every 50 milliseconds
         self.close_timer = QTimer(self)
         self.close_timer.timeout.connect(self.close)
-        self.close_timer.start(5000)  # Cerrar la SplashScreen después de 5 segundos
+        self.close_timer.start(5000)  # Closing SplashScreen after 5 seconds
 
         self.setLayout(main_layout)
 
-        # Configurar la animación de aparición
+        # Configure the appearance animation
         self.fade_in_animation(icon_label)
 
     def fade_in_animation(self, widget):
-        # Configurar la animación de aparición del widget
+        # Configure the widget display animation
         opacity_effect = QGraphicsOpacityEffect(widget)
         widget.setGraphicsEffect(opacity_effect)
 
         opacity_animation = QPropertyAnimation(opacity_effect, b"opacity")
-        opacity_animation.setStartValue(1.0)  # Iniciar desde completamente transparente
+        opacity_animation.setStartValue(1.0)  # Start from completely transparent
         opacity_animation.setEndValue(3.0)
         opacity_animation.setEasingCurve(QEasingCurve.InOutQuad)
-        opacity_animation.setDuration(2000)  # Ajusta la duración según tus necesidades
+        opacity_animation.setDuration(2000)  # Adjust the duration according to your needs
 
-        # Iniciar la animación de aparición
+        # Start appearance animation
         opacity_animation.start()
 
     def update_progress_bar(self):
@@ -433,7 +432,7 @@ def main():
     app = QApplication([])
     app.setStyle('Fusion')  # Use Fusion style
 
-    # Mostrar la pantalla de bienvenida
+    # Display the welcome screen
     splash_screen = SplashScreen()
     splash_screen.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
     splash_screen.exec_()  # Utiliza exec_() en lugar de show()
