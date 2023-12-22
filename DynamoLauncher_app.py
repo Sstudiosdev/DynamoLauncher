@@ -1,12 +1,12 @@
-# < -------------------- Dependencies -------------------- >
-
-from PyQt5.QtCore import QThread, pyqtSignal, Qt, QSettings
+from PyQt5.QtCore import QThread, pyqtSignal, Qt, QTimer
 from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem,
     QSizePolicy, QProgressBar, QPushButton, QApplication, QMainWindow,
-    QMessageBox, QDialog, QCheckBox, QMenuBar, QAction
+    QDialog, QCheckBox, QMessageBox
 )
 from PyQt5.QtGui import QPixmap, QIcon
+from PyQt5.QtWidgets import QAction
+from PyQt5.QtCore import QSettings
 
 from minecraft_launcher_lib.utils import get_minecraft_directory, get_version_list
 from minecraft_launcher_lib.install import install_minecraft_version
@@ -18,10 +18,44 @@ from uuid import uuid1
 from subprocess import Popen, CREATE_NO_WINDOW
 from os.path import join, isdir
 import os
-
-# < -------------------- Dependencies -------------------- >
+import sys
 
 minecraft_directory = get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
+
+class SplashScreen(QDialog):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("DynamoLauncher")
+        self.setStyleSheet(
+            "QDialog { background-color: black; color: white; }"
+            "QLabel { color: white; }"
+        )
+
+        self.text_label = QLabel(self)
+        self.text_label.setText("DynamoLauncher\nSstudios")
+        self.text_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        font = self.text_label.font()
+        font.setPointSize(20)
+        self.text_label.setFont(font)
+
+        # Ajustes adicionales para centrar el texto
+        self.text_label.setStyleSheet("QLabel { margin: 20px; }")  # Aumenta el valor del margen
+
+        # Timer para cerrar automáticamente después de 5 segundos
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.close_splash_screen)
+        self.timer.start(5000)  # 5000 milisegundos = 5 segundos
+
+        # Diseño del diseño
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.text_label)
+        self.setLayout(layout)
+
+    def close_splash_screen(self):
+        self.timer.stop()
+        self.accept()
 
 class LaunchThread(QThread):
     launch_setup_signal = pyqtSignal(str, str)
@@ -88,7 +122,6 @@ class LaunchThread(QThread):
         process.wait()
         self.state_update_signal.emit(False)
 
-
 class SettingsDialog(QDialog):
     def __init__(self, parent=None):
         super(SettingsDialog, self).__init__(parent)
@@ -123,7 +156,6 @@ class SettingsDialog(QDialog):
             self.dark_mode_checkbox.setChecked(not self.dark_mode_checkbox.isChecked())
 
         self.reject()
-
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -350,14 +382,19 @@ def main():
 
     app = QApplication([])
     app.setStyle('Fusion')  # Use Fusion style
+
+    # Mostrar la pantalla de bienvenida
+    splash_screen = SplashScreen()
+    splash_screen.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+    splash_screen.exec_()  # Utiliza exec_() en lugar de show()
+
     window = MainWindow()
     window.showMaximized()
-    exit(app.exec_())
-
+    splash_screen.close()  # Cerrar la pantalla de bienvenida después de que se muestre la ventana principal
+    sys.exit(app.exec_())
 
 if __name__ == '__main__':
     main()
-
 
 # MIT License
 
