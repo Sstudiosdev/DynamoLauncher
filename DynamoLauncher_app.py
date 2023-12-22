@@ -33,8 +33,9 @@ class SplashScreen(QDialog):
 
         self.setWindowTitle("DynamoLauncher")
         self.setStyleSheet(
-            "QDialog { background-color: black; color: white; }"
+            "QDialog { background-color: black; color: white; border-radius: 100px; }"
             "QLabel { color: white; }"
+            "QProgressBar { color: #3498db; }"  # Color de la barra de progreso
         )
 
         # Configurar el ícono
@@ -45,17 +46,30 @@ class SplashScreen(QDialog):
 
         # Configurar el texto
         text_label = QLabel(self)
-        text_label.setText("DynamoLauncher\nSstudios\n\nStarting Launcher")
+        text_label.setText("DynamoLauncher\nSstudios\n\nStarting Launcher\n")
         text_label.setAlignment(Qt.AlignmentFlag.AlignCenter)  # Centrar horizontalmente
 
         font = text_label.font()
         font.setPointSize(24)  # Ajusta el tamaño de fuente según tus necesidades
         text_label.setFont(font)
 
+        # Configurar la barra de carga
+        self.progress_bar = QProgressBar(self)
+        self.progress_bar.setMinimum(0)
+        self.progress_bar.setMaximum(100)
+        self.progress_bar.setValue(0)
+
+        # Configurar el texto de progreso
+        self.start_progress_label = QLabel(self)
+        self.start_progress_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.start_progress_label.setStyleSheet("QLabel { font-size: 16px; }")  # Ajusta el tamaño de fuente según tus necesidades
+
         # Configurar el diseño principal
         main_layout = QVBoxLayout(self)
         main_layout.addWidget(icon_label, 0, Qt.AlignmentFlag.AlignCenter)
         main_layout.addWidget(text_label, 0, Qt.AlignmentFlag.AlignCenter)
+        main_layout.addWidget(self.progress_bar, 0, Qt.AlignmentFlag.AlignCenter)
+        main_layout.addWidget(self.start_progress_label, 0, Qt.AlignmentFlag.AlignCenter)
 
         # Eliminar bordes y establecer tamaño mínimo
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -63,8 +77,11 @@ class SplashScreen(QDialog):
 
         # Timer para cerrar automáticamente después de 5 segundos
         self.timer = QTimer(self)
-        self.timer.timeout.connect(self.close)
-        self.timer.start(5000)  # 5000 milisegundos = 5 segundos
+        self.timer.timeout.connect(self.update_progress_bar)
+        self.timer.start(50)  # Actualizar la barra de progreso cada 50 milisegundos
+        self.close_timer = QTimer(self)
+        self.close_timer.timeout.connect(self.close)
+        self.close_timer.start(5000)  # Cerrar la SplashScreen después de 5 segundos
 
         self.setLayout(main_layout)
 
@@ -78,12 +95,20 @@ class SplashScreen(QDialog):
 
         opacity_animation = QPropertyAnimation(opacity_effect, b"opacity")
         opacity_animation.setStartValue(1.0)  # Iniciar desde completamente transparente
-        opacity_animation.setEndValue(2.0)
+        opacity_animation.setEndValue(3.0)
         opacity_animation.setEasingCurve(QEasingCurve.InOutQuad)
         opacity_animation.setDuration(2000)  # Ajusta la duración según tus necesidades
 
         # Iniciar la animación de aparición
         opacity_animation.start()
+
+    def update_progress_bar(self):
+        current_value = self.progress_bar.value()
+        if current_value < 100:
+            self.progress_bar.setValue(current_value + 3)
+            self.start_progress_label.setText(f"Loading: {current_value}%")
+        else:
+            self.timer.stop()
 
 class LaunchThread(QThread):
     launch_setup_signal = pyqtSignal(str, str)
@@ -418,7 +443,6 @@ def main():
 
     window = MainWindow()
     window.showMaximized()
-    splash_screen.close()
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
