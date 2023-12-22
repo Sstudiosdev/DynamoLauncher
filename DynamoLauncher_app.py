@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QThread, pyqtSignal, Qt, QTimer
+from PyQt5.QtCore import QThread, pyqtSignal, Qt, QTimer, QRect
 from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QLabel, QLineEdit, QComboBox, QSpacerItem,
     QSizePolicy, QProgressBar, QPushButton, QApplication, QMainWindow,
@@ -7,6 +7,10 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtWidgets import QAction
 from PyQt5.QtCore import QSettings
+from PyQt5.QtWidgets import QGraphicsOpacityEffect
+from PyQt5.QtCore import QEasingCurve
+from PyQt5.QtCore import QPropertyAnimation
+from PyQt5.QtCore import QParallelAnimationGroup, QPoint
 
 from minecraft_launcher_lib.utils import get_minecraft_directory, get_version_list
 from minecraft_launcher_lib.install import install_minecraft_version
@@ -22,6 +26,7 @@ import sys
 
 minecraft_directory = get_minecraft_directory().replace('minecraft', 'DynamoLauncher')
 
+
 class SplashScreen(QDialog):
     def __init__(self):
         super().__init__()
@@ -32,30 +37,53 @@ class SplashScreen(QDialog):
             "QLabel { color: white; }"
         )
 
-        self.text_label = QLabel(self)
-        self.text_label.setText("DynamoLauncher\nSstudios")
-        self.text_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        # Configurar el ícono
+        icon_pixmap = QPixmap('assets/title2.ico')  # Reemplaza con la ruta de tu ícono
+        icon_label = QLabel(self)
+        icon_label.setPixmap(icon_pixmap)
+        icon_label.setAlignment(Qt.AlignmentFlag.AlignCenter)  # Centrar horizontal y verticalmente
 
-        font = self.text_label.font()
-        font.setPointSize(20)
-        self.text_label.setFont(font)
+        # Configurar el texto
+        text_label = QLabel(self)
+        text_label.setText("DynamoLauncher\nSstudios\n\nStarting Launcher")
+        text_label.setAlignment(Qt.AlignmentFlag.AlignCenter)  # Centrar horizontalmente
 
-        # Ajustes adicionales para centrar el texto
-        self.text_label.setStyleSheet("QLabel { margin: 20px; }")  # Aumenta el valor del margen
+        font = text_label.font()
+        font.setPointSize(24)  # Ajusta el tamaño de fuente según tus necesidades
+        text_label.setFont(font)
+
+        # Configurar el diseño principal
+        main_layout = QVBoxLayout(self)
+        main_layout.addWidget(icon_label, 0, Qt.AlignmentFlag.AlignCenter)
+        main_layout.addWidget(text_label, 0, Qt.AlignmentFlag.AlignCenter)
+
+        # Eliminar bordes y establecer tamaño mínimo
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setMinimumSize(400, 200)  # Puedes ajustar el tamaño según tus necesidades
 
         # Timer para cerrar automáticamente después de 5 segundos
         self.timer = QTimer(self)
-        self.timer.timeout.connect(self.close_splash_screen)
+        self.timer.timeout.connect(self.close)
         self.timer.start(5000)  # 5000 milisegundos = 5 segundos
 
-        # Diseño del diseño
-        layout = QVBoxLayout(self)
-        layout.addWidget(self.text_label)
-        self.setLayout(layout)
+        self.setLayout(main_layout)
 
-    def close_splash_screen(self):
-        self.timer.stop()
-        self.accept()
+        # Configurar la animación de aparición
+        self.fade_in_animation(icon_label)
+
+    def fade_in_animation(self, widget):
+        # Configurar la animación de aparición del widget
+        opacity_effect = QGraphicsOpacityEffect(widget)
+        widget.setGraphicsEffect(opacity_effect)
+
+        opacity_animation = QPropertyAnimation(opacity_effect, b"opacity")
+        opacity_animation.setStartValue(1.0)  # Iniciar desde completamente transparente
+        opacity_animation.setEndValue(2.0)
+        opacity_animation.setEasingCurve(QEasingCurve.InOutQuad)
+        opacity_animation.setDuration(2000)  # Ajusta la duración según tus necesidades
+
+        # Iniciar la animación de aparición
+        opacity_animation.start()
 
 class LaunchThread(QThread):
     launch_setup_signal = pyqtSignal(str, str)
@@ -168,7 +196,7 @@ class MainWindow(QMainWindow):
 
         self.logo = QLabel(self.centralwidget)
         self.logo.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.logo.setPixmap(QPixmap('assets/title.png'))
+        self.logo.setPixmap(QPixmap('assets/title2.ico'))
         self.logo.setScaledContents(True)
 
         self.titlespacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
@@ -390,7 +418,7 @@ def main():
 
     window = MainWindow()
     window.showMaximized()
-    splash_screen.close()  # Cerrar la pantalla de bienvenida después de que se muestre la ventana principal
+    splash_screen.close()
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
