@@ -175,7 +175,7 @@ class SettingsDialog(QDialog):
     def __init__(self, parent=None):
         super(SettingsDialog, self).__init__(parent)
 
-        self.setWindowTitle("Configuración")
+        self.setWindowTitle("Settings")
         self.setGeometry(parent.geometry().center().x() - 150, parent.geometry().center().y() - 150, 300, 300)
 
         self.dark_mode_checkbox = QCheckBox("Modo oscuro", self)
@@ -188,7 +188,7 @@ class SettingsDialog(QDialog):
         self.apply_button = QPushButton("Aplicar", self)
         self.apply_button.clicked.connect(self.apply_changes)
 
-        self.close_button = QPushButton("Cerrar", self)
+        self.close_button = QPushButton("Close", self)
         self.close_button.clicked.connect(self.close_dialog)
 
         self.layout.addWidget(self.apply_button)
@@ -299,9 +299,9 @@ class MainWindow(QMainWindow):
         self.history = []
 
         self.menuBar().setNativeMenuBar(False)
-        self.settings_menu = self.menuBar().addMenu("Configuración")
+        self.settings_menu = self.menuBar().addMenu("Settings")
 
-        self.open_settings_action = QAction("Abrir Configuración", self)
+        self.open_settings_action = QAction("Open Settings", self)
         self.open_settings_action.triggered.connect(self.open_settings_dialog)
         self.settings_menu.addAction(self.open_settings_action)
 
