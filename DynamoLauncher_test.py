@@ -12,7 +12,7 @@ class MinecraftLauncher(QWidget):
     def init_ui(self):
         # Configuración de la ventana principal
         self.setGeometry(100, 100, 300, 200)
-        self.setWindowTitle('Minecraft Launcher')
+        self.setWindowTitle('Minecraft Launcher test')
 
         # Etiqueta de bienvenida
         welcome_label = QLabel(self)
