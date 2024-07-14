@@ -1,2 +1,2 @@
-# mjnlauncher
+# DynamoLauncher
 Minecraft Private Lancher
